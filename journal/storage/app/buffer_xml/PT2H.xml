@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessMessage>
+   <HeaderSection>
+     <Sender id="ГП ДБ Надым"/>
+     <Receiver id="М АСДУ ЕСГ"/>
+     <Generated at="2022-06-23T21:54:00+05:00"/>
+     <Comment>Сеансовые данные (2ч)</Comment>
+     <ReferenceTime time="2022-06-23T20:00:00+03:00"/>
+     <Scale>PT2H</Scale>
+     <Template id="D_NDM.PT2H.RT.V1"/>
+   </HeaderSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>53</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>97</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>86</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>77</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>92</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>34</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>1</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>86</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>43</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">ddfg</Identifier>
+     <Value>4</Value>
+     <Source>0</Source>
+   </DataSection>
+</BusinessMessage>

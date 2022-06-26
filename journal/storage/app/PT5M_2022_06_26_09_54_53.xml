@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessMessage>
+   <HeaderSection>
+     <Sender id="ГП ДБ Надым"/>
+     <Receiver id="М АСДУ ЕСГ"/>
+     <Generated at="2022-06-26T11:54:53+05:00"/>
+     <Comment>Сеансовые данные (Реальное время)</Comment>
+     <ReferenceTime time="2022-06-26T09:50:00+03:00"/>
+     <Scale>PT5M</Scale>
+     <Template id="D_NDM.PT5M.RT.V1"/>
+   </HeaderSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">test</Identifier>
+     <Value>12</Value>
+     <Source>0</Source>
+   </DataSection>
+</BusinessMessage>

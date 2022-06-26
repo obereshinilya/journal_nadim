@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessMessage>
+   <HeaderSection>
+     <Sender id="ГП ДБ Надым"/>
+     <Receiver id="М АСДУ ЕСГ"/>
+     <Generated at="2022-06-23T22:01:33+05:00"/>
+     <Comment>Сеансовые данные (24ч)</Comment>
+     <ReferenceTime time="2022-06-23T10:00:00+03:00"/>
+     <Scale>PT24H</Scale>
+     <Template id="D_NDM.PT24H.RT.V1"/>
+     <FullName>ГД Надым</FullName>
+   </HeaderSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>37</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>61</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>33</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>95</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>49</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>79</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>88</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>65</Value>
+     <Source>0</Source>
+   </DataSection>
+   <DataSection>
+     <Identifier type="ASDU_ESG">dfsd</Identifier>
+     <Value>52</Value>
+     <Source>0</Source>
+   </DataSection>
+</BusinessMessage>

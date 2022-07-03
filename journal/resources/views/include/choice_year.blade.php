@@ -1,7 +1,7 @@
 <div class="date_div">
     <div class="date-input-group">
         <select class="date_input" id="year"></select>
-        <label for="table_date_start" class="table_date_label">Дата</label>
+        <label for="table_date_start" class="table_date_label">Год</label>
     </div>
 
     <input type="hidden" value="date" id="date-type">

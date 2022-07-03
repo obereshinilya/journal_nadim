@@ -15,6 +15,10 @@ class MenuController extends Controller
    {
        return view('time_params_sut');
    }
+   public function index_minut()
+   {
+       return view('time_params_minut');
+   }
 }
 
 ?>

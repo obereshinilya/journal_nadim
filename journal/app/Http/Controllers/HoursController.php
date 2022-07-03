@@ -15,7 +15,7 @@ class HoursController extends Controller
     {
         $all_param_hour = TableObj::where('hour_param', '=', true)->select('hfrpok', 'namepar1', 'shortname')->get()->toArray();
         for ($l=0; $l<count($all_param_hour); $l++){
-            $disp_date_time = date('Y-m-d 10:00', strtotime($date));
+            $disp_date_time = date('Y-m-d 09:00', strtotime($date));
             for ($i=1; $i<=24; $i++){
                 $arr = Hour_params::where('hfrpok_id','=', $all_param_hour[$l]['hfrpok'])
                     ->wherebetween('timestamp', [$disp_date_time, date('Y-m-d H:i', strtotime($disp_date_time. '+59 minutes'))])->orderbyDesc('id')->first();

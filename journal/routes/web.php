@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Auth;
     //Главная
     Route::get('/', [Controllers\MenuController::class, 'index_hour'])->name('gazprom');
     Route::get('/sut', [Controllers\MenuController::class, 'index_sut']);
+    Route::get('/minutes', [Controllers\MenuController::class, 'index_minut']);
 
     //По-новому минутные параметры
-    Route::get('/mins', [Controllers\MinutesController::class, 'index']);
-    Route::get('/mins_param/{date}/{hour}', [Controllers\MinutesController::class, 'get_min_param']);
+    Route::get('/minutes_param/{date}/{hour}', [Controllers\MinutesController::class, 'get_minute_param']);
 
     //По-новому часовые параметры
     Route::get('/hours_param/{date}', [Controllers\HoursController::class, 'get_hour_param']);
@@ -59,6 +59,20 @@ use Illuminate\Support\Facades\Auth;
     Route::get('/get_gpa_rezhim_report/{dks}', [Controllers\BalansController::class, 'get_gpa_rezhim_report'])->name('get_gpa_rezhim_report');
     Route::get('/get_gpa_rezhim_report_data/{date}/{dks}', [Controllers\BalansController::class, 'get_gpa_rezhim_report_data'])->name('get_gpa_rezhim_report_data');
     Route::get('/print_gpa_rezhim_report/{date}/{dks}', [Controllers\BalansController::class, 'print_gpa_rezhim_report'])->name('print_gpa_rezhim_report');
+        //Сводный отчет ННГДУ
+    Route::get('/open_svodniy', [Controllers\BalansController::class, 'open_svodniy'])->name('open_svodniy');
+    Route::get('/get_svodniy/{date}', [Controllers\BalansController::class, 'get_svodniy'])->name('get_svodniy');
+    Route::get('/print_svodniy/{date}', [Controllers\BalansController::class, 'print_svodniy'])->name('print_svodniy');
+        //Валовая добыча
+    Route::get('/open_val', [Controllers\BalansController::class, 'open_val'])->name('open_val');
+    Route::get('/get_val/{date}', [Controllers\BalansController::class, 'get_val'])->name('get_val');
+    Route::get('/print_val/{date}', [Controllers\BalansController::class, 'print_val'])->name('print_val');
+    Route::get('/save_plan_month/{date}/{value}', [Controllers\BalansController::class, 'save_plan_month'])->name('save_plan_month');
+        //Балансовый
+    Route::get('/open_balans', [Controllers\BalansController::class, 'open_balans'])->name('open_balans');
+    Route::get('/get_balans/{date}', [Controllers\BalansController::class, 'get_balans'])->name('get_balans');
+    Route::get('/print_balans/{date}', [Controllers\BalansController::class, 'print_balans'])->name('print_balans');
+
 
     //ГЛАВНАЯ ТАБЛИЦА
     Route::post('/add-index', [Controllers\MainTableController::class, 'add_index']);

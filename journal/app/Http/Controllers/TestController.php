@@ -119,6 +119,32 @@ class TestController extends Controller
     }
 
 
+
+//    public function test($params_type)
+//    {
+//
+//        $test_table_data = TableObj::select('hfrpok', 'guid_masdu_5min', 'guid_masdu_hours', 'guid_masdu_day', 'id')->get();
+//        for ($i = 29; $i < 30; $i++) {
+//            for ($k = 0; $k < 12; $k++) {
+//                for ($j = 0; $j < 12; $j++) {
+//                    $min = $j * 5;
+//                    foreach ($test_table_data as $row) {
+//                        $data_in_table['val'] = rand(1, 1000) / 100;
+//                        $data_in_table['hfrpok_id'] = $row['id'];
+//                        $data_in_table['timestamp'] = date('Y-m-' . $i . ' ' . $k . ':' . $min . ':10');
+////                        Hour_params::create($data_in_table);
+////                    Sut_params::create($data_in_table);
+//                        Min_params::create($data_in_table);
+//
+//                    }
+//                }
+//            }
+//
+//        }
+//    }
+
+
+
     public function get_parent($parentId)
     {
         $data = TableObj::select('id', 'parentId', 'inout')->get();

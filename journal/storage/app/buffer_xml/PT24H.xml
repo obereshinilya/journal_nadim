@@ -3,56 +3,46 @@
    <HeaderSection>
      <Sender id="ГП ДБ Надым"/>
      <Receiver id="М АСДУ ЕСГ"/>
-     <Generated at="2022-06-23T22:01:33+05:00"/>
+     <Generated at="2022-06-29T14:33:58+05:00"/>
      <Comment>Сеансовые данные (24ч)</Comment>
-     <ReferenceTime time="2022-06-23T10:00:00+03:00"/>
+     <ReferenceTime time="2022-06-29T10:00:00+03:00"/>
      <Scale>PT24H</Scale>
      <Template id="D_NDM.PT24H.RT.V1"/>
      <FullName>ГД Надым</FullName>
    </HeaderSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>37</Value>
+     <Identifier type="ASDU_ESG">61ff3359-aaef-4163-bd2a-56db1b8d2e5b</Identifier>
+     <Value>6.060</Value>
      <Source>0</Source>
    </DataSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>61</Value>
+     <Identifier type="ASDU_ESG">534e3719-2879-4dd3-8bfa-d65e398015ac</Identifier>
+     <Value>2.490</Value>
      <Source>0</Source>
    </DataSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>33</Value>
+     <Identifier type="ASDU_ESG">948e6b42-7337-430e-86fa-fe80fa7026eb</Identifier>
+     <Value>7.990</Value>
      <Source>0</Source>
    </DataSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>95</Value>
+     <Identifier type="ASDU_ESG">4ca44144-c8bc-49b2-acb9-81e2489cc486</Identifier>
+     <Value>4.730</Value>
      <Source>0</Source>
    </DataSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>49</Value>
+     <Identifier type="ASDU_ESG">051358f2-e8cd-4004-bb06-a458fc724d98</Identifier>
+     <Value>9.940</Value>
      <Source>0</Source>
    </DataSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>79</Value>
+     <Identifier type="ASDU_ESG">cfee15ea-e475-4c31-9510-f456041eea57</Identifier>
+     <Value>1.680</Value>
      <Source>0</Source>
    </DataSection>
    <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>88</Value>
-     <Source>0</Source>
-   </DataSection>
-   <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>65</Value>
-     <Source>0</Source>
-   </DataSection>
-   <DataSection>
-     <Identifier type="ASDU_ESG">dfsd</Identifier>
-     <Value>52</Value>
+     <Identifier type="ASDU_ESG">8b58b99f-61a5-4db6-8ec7-7d0ed321b2f0</Identifier>
+     <Value>6.030</Value>
      <Source>0</Source>
    </DataSection>
 </BusinessMessage>

@@ -34,18 +34,18 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-        'remove_astra' => [
+        'xml_ptp' => [
                'driver' => 'sftp',
-                'host' => '172.16.205.42',
+                'host' => '10.45.1.134',
                 'username' => 'potok',
                 'password' => 'Potok-DU',
                 'visibility' => 'public',
                 'permPublic' => 0777, /// <- this one did the trick
                 'root' => '/',
         ],
-        'remove_astra_result' => [
+        'xml_disp' => [
                'driver' => 'sftp',
-                'host' => '172.16.205.42',
+                'host' => '10.45.1.134',
                 'username' => 'potok',
                 'password' => 'Potok-DU',
                 'visibility' => 'public',

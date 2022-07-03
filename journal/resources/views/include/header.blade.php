@@ -4,22 +4,22 @@
             <ul class="header_menu">
                 <li><a href="/" style="padding-right: 37px;">Часовые показатели</a></li>
                 <li><a href="/sut" style="padding-right: 37px;">Суточные показатели</a></li>
-                <li><a href="/mins" style="padding-right: 37px;">Реальное время</a></li>
-                <li><a href="#" style="padding-right: 37px;">Отправка XML<i class="fa fa-angle-down"></i></a>
-                    <ul class="submenu_ul">
-                        <div>
-                            <li class="submenu_li"><a href="/journal_xml" class="submenu_a level1">Журнал XML</a></li>
-                        </div>
-                        <div>
-                            <li class="submenu_li" ><a href="#" class="submenu_a  level1">Отправка</a></li>
-                            <div class="level2">
-                                <li class="submenu_li" style="background-color: rgb(58,146,229)" ><a id="xml_hour">Часовые</a></li>
-                                <li class="submenu_li" style="background-color: rgb(58,146,229)"><a id="xml_sut">Суточные</a></li>
-                                <li class="submenu_li" style="background-color: rgb(58,146,229)"><a id="xml_mins">Реальное время</a></li>
-                            </div>
-                        </div>
-                    </ul>
-                </li>
+                <li><a href="/minutes" style="padding-right: 37px;">Реальное время</a></li>
+                <li><a href="/journal_xml" style="padding-right: 37px;">Журнал XML<i class="fa fa-angle-down"></i></a></li>
+{{--                    <ul class="submenu_ul">--}}
+{{--                        <div>--}}
+{{--                            <li class="submenu_li"><a href="/journal_xml" class="submenu_a level1">Журнал XML</a></li>--}}
+{{--                        </div>--}}
+{{--                        <div>--}}
+{{--                            <li class="submenu_li" ><a href="#" class="submenu_a  level1">Отправка</a></li>--}}
+{{--                            <div class="level2">--}}
+{{--                                <li class="submenu_li" style="background-color: rgb(58,146,229)" ><a id="xml_hour">Часовые</a></li>--}}
+{{--                                <li class="submenu_li" style="background-color: rgb(58,146,229)"><a id="xml_sut">Суточные</a></li>--}}
+{{--                                <li class="submenu_li" style="background-color: rgb(58,146,229)"><a id="xml_mins">Реальное время</a></li>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
                 <li><a href="/reports" style="padding-right: 37px;">Отчеты<i class="fa fa-angle-down"></i></a>
                 <li><a href="#" style="padding-right: 37px;">Настройка параметров ОЖД<i class="fa fa-angle-down"></i></a>
                     <ul class="submenu_ul">

@@ -29,7 +29,7 @@
 
     $(document).ready(function (){
 
-        $( "#side_menu" ).width('12%')
+        $( "#side_menu" ).width('13%')
 
         $( "#side_menu" ).resizable({
             handles: 'e'
@@ -60,12 +60,23 @@
                                     </ul>
 
                                     <ul>
-                                        <li><a id="2" id="null" class="tableItem">Режим работы турбоагрегатов<img class="treePlusIcon" src="http://127.0.0.1:8000/assets/images/icons/plus.png"></a>
+                                        <li><a id="2" id="null" class="tableItem">Режим работы ГПА<img class="treePlusIcon" src="http://127.0.0.1:8000/assets/images/icons/plus.png"></a>
                                             <ul hidden="true">
                                                 <li><a id="21" class="tableItem">ДКС1</a>
                                                 <li><a id="22" class="tableItem">ДКС2</a>
                                             </ul>
                                         </li>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="3" class="tableItem">Сводный отчет ННГДУ</a>
+                                    </ul>
+                                    <ul>
+                                        <li><a id="4" class="tableItem">Валовая добыча</a>
+
+                                    </ul>
+                                    <ul>
+                                        <li><a id="5" class="tableItem">Балансовый отчет</a>
+
                                     </ul>
                                 </div>`
 
@@ -115,8 +126,12 @@
                 document.location.href = '/gpa_rezhim'
             } else if (vibrano === '21' || vibrano === '22'){
                 document.location.href = '/get_gpa_rezhim_report/'+vibrano.slice(1)
-            } else {
-
+            } else if(vibrano === '3'){
+                document.location.href = '/open_svodniy'
+            }else if(vibrano === '4'){
+                document.location.href = '/open_val'
+            }else if(vibrano === '5'){
+                document.location.href = '/open_balans'
             }
 
 

@@ -11,11 +11,11 @@ class TableObj extends Model{
     {
         for ($i=0; $i<=11; $i++){
             $min = 5*$i;
-            $min_buff = 5*$i + 2;
+            $min_buff = 5*$i + 4;
 
             $arr[$i] = $this->hasOne('App\Models\Min_params' ,'hfrpok_id', 'hfrpok')
                 ->whereBetween('timestamp', [date('Y-m-d H:i', strtotime($date_start.' +'. $min.' minutes')), date('Y-m-d H:i', strtotime($date_start.' +'. $min_buff .' minutes'))])
-                ->select('val')->orderby('id')->first();
+                ->select('val')->orderbydesc('id')->first();
             if($arr[$i]){
                 $arr[$i] = $arr[$i]->toArray();
             }

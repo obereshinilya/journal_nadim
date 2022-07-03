@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Hour_params;
+use App\Models\PlanBalans;
 use App\Models\TableObj;
+use App\Models\ToAlpha;
 use Faker\Core\Number;
 use Illuminate\Http\Request;use Illuminate\Support\Facades\DB;
 
@@ -50,6 +52,16 @@ class TestTableController extends Controller
             return $e;
         }
     }
+
+    public function record_plan(){
+        $value = PlanBalans::orderbydesc('month')->first();
+        $value = $value->toArray();
+        $value = $value['plan_month'];
+        ToAlpha::where('name_param', '=', 'month_plan')->first()->update(['value'=>$value]);
+        ToAlpha::where('name_param', '=', 'day_plan')->first()->update(['value'=>round($value/30)]);
+    }
+
+
 }
 
 ?>

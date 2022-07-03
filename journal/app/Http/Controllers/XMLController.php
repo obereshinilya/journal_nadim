@@ -47,10 +47,18 @@ class XMLController extends Controller
             $minutes = (ceil($minutes / 5)-1) * 5;
                 if ($hours_xml == 1) {   //для часовика
                     $obj_data = TableObj::where('guid_masdu_hours', '!=', '')->get();     // выбираем те, что надо отправлять
+                    if (count($obj_data) == 0){    //проверка на наличие записей с guid
+                        $data_in_journal['event'] = 'Отправка XML PT24H';
+                        $data_in_journal['option'] = 'Нет данных для отправки!';
+                        $data_in_journal['timestamp'] = date('Y-m-d H:i:s');
+                        $record = Events::create($data_in_journal);
+                        return 'Нет данных для отправки!';
+                    }
                     $hfrpok = [];
                     foreach ($obj_data as $row){
                         array_push($hfrpok, $row->hfrpok);
                     }
+//                    dd($hfrpok);
                     $params = DB::table('app_info.hour_params')->whereIn('hfrpok_id', $hfrpok)->where('timestamp', '>', $time)->orderByDesc('timestamp')->get();
                     $count_in_test_table = count($hfrpok); //сколько надо отправить
                     $count_params = count($params); //сколько есть на отправку
@@ -67,6 +75,13 @@ class XMLController extends Controller
                     }
                 } elseif ($hours_xml == 24) {
                     $obj_data = TableObj::where('guid_masdu_day', '!=', '')->get();
+                    if (count($obj_data) == 0){    //проверка на наличие записей с guid
+                        $data_in_journal['event'] = 'Отправка XML PT2H';
+                        $data_in_journal['option'] = 'Нет данных для отправки!';
+                        $data_in_journal['timestamp'] = date('Y-m-d H:i:s');
+                        $record = Events::create($data_in_journal);
+                        return 'Нет данных для отправки!';
+                    }
                     $hfrpok = [];
                     foreach ($obj_data as $row){
                         array_push($hfrpok, $row->hfrpok);
@@ -87,6 +102,13 @@ class XMLController extends Controller
                     }
                 } else{
                     $obj_data = TableObj::where('guid_masdu_5min', '!=', '')->get();
+                    if (count($obj_data) == 0){    //проверка на наличие записей с guid
+                        $data_in_journal['event'] = 'Отправка XML PT5M';
+                        $data_in_journal['option'] = 'Нет данных для отправки!';
+                        $data_in_journal['timestamp'] = date('Y-m-d H:i:s');
+                        $record = Events::create($data_in_journal);
+                        return 'Нет данных для отправки!';
+                    }
                     $hfrpok = [];
                     foreach ($obj_data as $row){
                         array_push($hfrpok, $row->hfrpok);
@@ -120,7 +142,7 @@ class XMLController extends Controller
                     if ($hour<10){
                         $hour ='0'.$hour;
                     }
-                    $time_generate = date('Y-m-d') . 'T' . date('H:00:00', strtotime('-2 hours'));
+                    $time_generate = date('Y-m-d') . 'T' . date($hour.':00:00', strtotime('-2 hours'));
                 } elseif ($hours_xml == 24){
                     $time_generate = date('Y-m-d') . 'T10:00:00';
                 } else{
@@ -129,7 +151,6 @@ class XMLController extends Controller
                     }
                     $time_generate = date('Y-m-d') . 'T'.date('H:'. $minutes.':00', strtotime('-2 hours'));
                 }
-
                 $contents = $contents . "     <ReferenceTime time=\"" . $time_generate . $time_zone . "\"/>\n";
                 $contents = $contents . "     <Scale>{$type_xml}</Scale>\n";
 
@@ -224,7 +245,13 @@ class XMLController extends Controller
                         $name_xml = 'PT5M_' . date('Y_m_d_H_i_s',strtotime('-2 hours'));
                     }
                     Storage::disk('local')->put($name_xml . '.xml', $contents, 'public'); //можно дописать путь перед $name_xml
-//                    Storage::disk('xml_create')->put($name_xml . '.xml', $contents, 'public'); //можно дописать путь перед $name_xml
+                    try {
+                        Storage::disk('xml_ptp')->put($name_xml . '.xml', $contents, 'public'); //можно дописать путь перед $name_xml
+                        Storage::disk('xml_disp')->put($name_xml . '.xml', $contents, 'public'); //можно дописать путь перед $name_xml
+                    } catch (\Throwable $e){
+
+                    }
+
                     $data_in_journal['event'] = 'Отправка XML'.' '. $name_xml;
                     $data_in_journal['option'] = 'XML успешно отправлена!';
                     $data_in_journal['timestamp'] = date('Y-m-d H:i:s');

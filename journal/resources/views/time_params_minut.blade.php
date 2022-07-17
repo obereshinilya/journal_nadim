@@ -45,20 +45,20 @@
 
             </tbody>
         </table>
-        <table id="itemInfoTable" class="itemInfoTable" style="width: 63.1%; float:left">
+        <table id="itemInfoTable" class="itemInfoTable" style="width: 74%; float:left; table-layout: fixed"">
             <thead>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>0`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>5`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>10`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>15`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>20`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>25`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>30`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>35`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>40`</h4></th>
-                <th class="timeCell" style="width: 2%; padding-left: 0px;text-align: center"><h4>45`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>50`</h4></th>
-                <th class="timeCell" style="width: 2%;text-align: center"><h4>55`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>0`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>5`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>10`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>15`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>20`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>25`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>30`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>35`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>40`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>45`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>50`</h4></th>
+                <th class="timeCell" style="text-align: center; width: 5%"><h4>55`</h4></th>
             </thead>
             <tbody>
 
@@ -224,7 +224,7 @@
                                     delay: 100, // ms
                                     moveTransition: 'transform 0.2s ease-out',
                                     allowHTML: true,
-                                    interactive: true,
+                                    // interactive: true,
                                 });
                             }
 

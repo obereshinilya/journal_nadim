@@ -50,17 +50,7 @@
         $(document).ready(function (){
 
             getTableData();
-            // var button_print = document.getElementById('to_print'); //кнопка отправки на печать
-            // button_print.href = `/create_pdf_ter/economy_norm/${start_date}`;
 
-
-            $('#itemInfoTable').DataTable({
-                "pagingType": "full_numbers",
-                destroy: true
-
-            });
-
-            // $('.objCell').removeAttr('style')
         });
 
         function getTableData(type=null, data=null) {
@@ -77,9 +67,7 @@
                         $('#itemInfoTable').DataTable().destroy();
                     }
                     var result = Object.keys(res);
-                    // var result = Object.keys(res).map((key) => res[key]);
-//
-// console.log(res)
+
                     var table_body=document.getElementById('itemInfoTable').getElementsByTagName('tbody')[0]
                     table_body.innerText=''
                     for (var i = 0; i<res.length; i++){
@@ -96,9 +84,10 @@
 
                     $('#itemInfoTable').DataTable({
                         "pagingType": "full_numbers",
-                        destroy: true
+                        destroy: true,
+                        order: [[0, 'desc']],
+
                     });
-                    // $('.objCell').removeAttr('style')
 
                     window.setTimeout(function () {
                         document.body.classList.add('loaded');

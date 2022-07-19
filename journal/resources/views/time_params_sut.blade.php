@@ -88,6 +88,15 @@
 
         })
 
+        function goToDay(day) {
+            if (day < 10){
+                day = '0' + day
+            }
+            localStorage.setItem('day', day)
+            localStorage.setItem('month', $('#table_date_start').val().split('-')[1])
+            localStorage.setItem('year', $('#table_date_start').val().split('-')[0])
+            document.location.href = '/'
+        }
 
         function get_table_data(data_id) {
 
@@ -128,7 +137,7 @@
                         // console.log(row[0]['timestamp'])
                         for (var id = 1; id <= Object.keys(row).length -4; id++) {
                             if (!index_thead){
-                                tr_thead.innerHTML += `<th  class="timeCell"  style="width: 2%; text-align: center" data-time-id="1"><h4>${id}</h4></th>`
+                                tr_thead.innerHTML += `<th  class="timeCell" onclick="goToDay(${id})" style="width: 2%; text-align: center" data-time-id="1"><h4>${id}</h4></th>`
                             }
                             if (row[id]['id']) {
                                 chart_print = true
@@ -224,7 +233,7 @@
                     link_to_create('/createtimeparams');
 
                 },
-                async:true
+                async:false
 
             })
 

@@ -100,6 +100,14 @@
                 document.getElementById('select_interval').value = today.getHours()
 
             }
+/////Проверяем заходим ли мы по ссылке
+            if (localStorage.getItem('full_date')){
+                $('#table_date_start').val(localStorage.getItem('full_date'))
+                document.getElementById('select_interval').value = localStorage.getItem('hour')
+                localStorage.clear()
+            } else {
+
+            }
 
             click_side_menu_func = get_table_data;
 
@@ -236,7 +244,7 @@
                         // link_to_create('/createtimeparams');
 
                 },
-                async:true
+                async:false
 
             })
 

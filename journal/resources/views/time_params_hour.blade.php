@@ -52,31 +52,31 @@
         <table id="itemInfoTable" class="itemInfoTable" style="width: 74%; float:left">
             <thead>
                 <tr>
-                    <th  class="timeCell"  style="width: 4%" data-time="10:00" data-time-id="1"><h4>10:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="11:00" data-time-id="2"><h4>11:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="12:00" data-time-id="3"><h4>12:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="13:00" data-time-id="4"><h4>13:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="14:00" data-time-id="5"><h4>14:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="15:00" data-time-id="6"><h4>15:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="16:00" data-time-id="7"><h4>16:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="17:00" data-time-id="8"><h4>17:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="18:00" data-time-id="9"><h4>18:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="19:00" data-time-id="10"><h4>19:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="20:00" data-time-id="11"><h4>20:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="21:00" data-time-id="12"><h4>21:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)" style="width: 4%" data-time="10:00" data-time-id="1"><h4>10:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="11:00" data-time-id="2"><h4>11:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="12:00" data-time-id="3"><h4>12:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="13:00" data-time-id="4"><h4>13:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="14:00" data-time-id="5"><h4>14:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="15:00" data-time-id="6"><h4>15:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="16:00" data-time-id="7"><h4>16:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="17:00" data-time-id="8"><h4>17:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="18:00" data-time-id="9"><h4>18:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="19:00" data-time-id="10"><h4>19:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="20:00" data-time-id="11"><h4>20:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="21:00" data-time-id="12"><h4>21:00</h4></th>
 
-                    <th  class="timeCell"  style="width: 4%" data-time="22:00" data-time-id="13"><h4>22:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="23:00" data-time-id="14"><h4>23:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="00:00" data-time-id="15"><h4>00:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="01:00" data-time-id="16"><h4>01:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="02:00" data-time-id="17"><h4>02:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="03:00" data-time-id="18"><h4>03:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="04:00" data-time-id="19"><h4>04:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="05:00" data-time-id="20"><h4>05:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="06:00" data-time-id="21"><h4>06:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="07:00" data-time-id="22"><h4>07:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="08:00" data-time-id="23"><h4>08:00</h4></th>
-                    <th  class="timeCell"  style="width: 4%" data-time="09:00" data-time-id="24"><h4>09:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="22:00" data-time-id="13"><h4>22:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="23:00" data-time-id="14"><h4>23:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="00:00" data-time-id="15"><h4>00:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="01:00" data-time-id="16"><h4>01:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="02:00" data-time-id="17"><h4>02:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="03:00" data-time-id="18"><h4>03:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="04:00" data-time-id="19"><h4>04:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="05:00" data-time-id="20"><h4>05:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="06:00" data-time-id="21"><h4>06:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="07:00" data-time-id="22"><h4>07:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="08:00" data-time-id="23"><h4>08:00</h4></th>
+                    <th  class="timeCell" onclick="goToHour(this.textContent)"  style="width: 4%" data-time="09:00" data-time-id="24"><h4>09:00</h4></th>
                 </tr>
             </thead>
             <tbody>
@@ -97,6 +97,7 @@
         var header_content = 'Часовые показатели.  ';
         var datatable = null;
         $(document).ready(function () {
+
 /////Объединяем скролы двух таблиц
             $("#itemInfoTable").scroll(function() {
                 $('#statickItemInfoTable').scrollTop($("#itemInfoTable").scrollTop());
@@ -112,6 +113,13 @@
             } else {
                 $('#table_date_start').val(today.toISOString().substring(0, 10))
             }
+/////Проверяем заходим ли мы по ссылке
+            if (localStorage.getItem('day')){
+                $('#table_date_start').val(localStorage.getItem('year') + '-' + localStorage.getItem('month') + '-' +localStorage.getItem('day'))
+                localStorage.clear()
+            } else {
+
+            }
             click_side_menu_func = get_table_data;
             document.getElementById("table_date_start").setAttribute("max", today.toISOString().substring(0, 10));
             $('#table_date_start').change(function () {
@@ -120,6 +128,21 @@
             })
 
         })
+///Для перехода к пятиминуткам
+        function goToHour(hour) {
+            hour = hour.split(':')[0]
+
+            if (hour[0] === '0'){
+                localStorage.setItem('hour', hour[1])
+                var date = new Date($('#table_date_start').val())
+                date = new Date(date.setDate(date.getDate() + 1))
+                localStorage.setItem('full_date', date.toISOString().substring(0, 10))
+            } else {
+                localStorage.setItem('hour', hour)
+                localStorage.setItem('full_date', $('#table_date_start').val())
+            }
+            document.location.href = '/minutes'
+        }
 
 
         function get_table_data(data_id) {
@@ -132,7 +155,6 @@
             }
 
             data['date'] = $('#table_date_start').val();
-
 
             $.ajax({
                 url: '/hours_param/'+$('#table_date_start').val(),
@@ -250,7 +272,7 @@
                     link_to_create('/createtimeparams');
 
                 },
-                async:true
+                async:false
 
             })
 

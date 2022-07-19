@@ -2,9 +2,9 @@
 <div class="header">
     <div class="header_container">
             <ul class="header_menu">
-                <li><a href="/" style="padding-right: 37px;">Часовые показатели</a></li>
-                <li><a href="/sut" style="padding-right: 37px;">Суточные показатели</a></li>
-                <li><a href="/minutes" style="padding-right: 37px;">Реальное время</a></li>
+                <li onclick="localStorage.clear()"><a href="/" style="padding-right: 37px;">Часовые показатели</a></li>
+                <li onclick="localStorage.clear()"><a href="/sut" style="padding-right: 37px;">Суточные показатели</a></li>
+                <li onclick="localStorage.clear()"><a href="/minutes" style="padding-right: 37px;">Реальное время</a></li>
                 <li><a href="/journal_xml" style="padding-right: 37px;">Журнал XML<i class="fa fa-angle-down"></i></a></li>
 {{--                    <ul class="submenu_ul">--}}
 {{--                        <div>--}}

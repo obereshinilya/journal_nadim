@@ -55,15 +55,15 @@
 
                     <td class="row" style="text-align: center">
                         @if ($data[$i]['guid_masdu_5min']) <input class="guid_masdu_5min_{{$data[$i]['hfrpok']}}" type="checkbox" checked onclick="showMe(this)"> @else <input class="guid_masdu_5min_{{$data[$i]['hfrpok']}}" type="checkbox" onclick="showMe(this)"> @endif
-                        <textarea style="display: none" id="guid_masdu_5min_{{$data[$i]['hfrpok']}}">{{$data[$i]['guid_masdu_5min']}}</textarea>
+                        <textarea style="display: none; margin-left: 4%" id="guid_masdu_5min_{{$data[$i]['hfrpok']}}">{{$data[$i]['guid_masdu_5min']}}</textarea>
                     </td>
                     <td class="row" style="text-align: center">
                         @if ($data[$i]['guid_masdu_hours']) <input class="guid_masdu_hours_{{$data[$i]['hfrpok']}}" type="checkbox" checked onclick="showMe(this)"> @else <input class="guid_masdu_hours_{{$data[$i]['hfrpok']}}" type="checkbox" onclick="showMe(this)"> @endif
-                        <textarea style="display: none" id="guid_masdu_hours_{{$data[$i]['hfrpok']}}">{{$data[$i]['guid_masdu_hours']}}</textarea>
+                        <textarea style="display: none; margin-left: 4%" id="guid_masdu_hours_{{$data[$i]['hfrpok']}}">{{$data[$i]['guid_masdu_hours']}}</textarea>
                     </td>
                     <td class="row" style="text-align: center">
                         @if ($data[$i]['guid_masdu_day']) <input class="guid_masdu_day_{{$data[$i]['hfrpok']}}" type="checkbox" checked onclick="showMe(this)"> @else <input class="guid_masdu_day_{{$data[$i]['hfrpok']}}" type="checkbox" onclick="showMe(this)"> @endif
-                        <textarea style="display: none" id="guid_masdu_day_{{$data[$i]['hfrpok']}}" >{{$data[$i]['guid_masdu_day']}}</textarea>
+                        <textarea style="display: none; margin-left: 4%" id="guid_masdu_day_{{$data[$i]['hfrpok']}}" >{{$data[$i]['guid_masdu_day']}}</textarea>
                     </td>
 
                     <td class="row" style="text-align: center">@if ($data[$i]['min_param']) <input id="min_param_{{$data[$i]['hfrpok']}}" type="checkbox" checked> @else <input type="checkbox" id="min_param_{{$data[$i]['hfrpok']}}"> @endif</td>
@@ -142,12 +142,32 @@
                         type:'POST',
                         data: data,
                         success:(res)=>{
+                            var i = 0
+                                $(tr).children().each(function (){
+                                    $($(tr).children()[i]).css("background", "rgba(0, 0, 0, 0)")
+                                    i++
+                                })
                                 alert('Данные успешно обновлены!')
                         },
                         async: true
                     });
                 }
             })
+
+            //Обработка измененной строки
+            $( ".namepar1" ).change(function() {
+                $($(this).parent()[0]).css("background", "#fc6262")
+            });
+            $( ".tag_name" ).change(function() {
+                $($(this).parent()[0]).css("background", "#fc6262")
+            });
+            $( ".shortname" ).change(function() {
+                $($(this).parent()[0]).css("background", "#fc6262")
+            });
+            $( ":checkbox" ).change(function() {
+                $($(this).parent()[0]).css("background", "#fc6262")
+            });
+
         })
 
         function show_hide() {
@@ -162,6 +182,7 @@
         .row{
             padding-top: 10px;
             padding-bottom: 10px;
+
         }
         .create_td{
             background-color: white;
@@ -193,6 +214,10 @@
             background-color: #008CBA;
             color: white;
         }
+
+        textarea { font-family: HeliosCond; }
+        input[type=text] { font-family: HeliosCond; }
+
     </style>
 
 @endsection

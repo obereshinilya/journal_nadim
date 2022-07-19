@@ -40,17 +40,6 @@
 
 @include('include.pre_loader')
 
-{{--@auth--}}
-{{--    <div class="content" id="main_content" >--}}
-{{--        @yield('content')--}}
-{{--    </div>--}}
-
-{{--@endauth--}}
-{{--@guest--}}
-{{--    <div class="content" style="padding-left: 20px; width: 100%">--}}
-{{--        @yield('content')--}}
-{{--    </div>--}}
-{{--@endguest--}}
 
 <div class="content" id="main_content" >
     @yield('content')
@@ -68,12 +57,12 @@
     });
 
 
-    window.onload = function () {
-        document.body.classList.add('loaded_hiding');
-        window.setTimeout(function () {
-            document.body.classList.add('loaded');
-            document.body.classList.remove('loaded_hiding');
-        }, 500);
+    // window.onload = function () {
+    //     document.body.classList.add('loaded_hiding');
+    //     window.setTimeout(function () {
+    //         document.body.classList.add('loaded');
+    //         document.body.classList.remove('loaded_hiding');
+    //     }, 500);
     }
 </script>
 

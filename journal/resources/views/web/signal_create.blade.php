@@ -241,7 +241,8 @@
             background-color: #008CBA;
             color: white;
         }
-
+        textarea { font-family: HeliosCond; }
+        input[type=text] { font-family: HeliosCond; }
     </style>
 
 @endsection

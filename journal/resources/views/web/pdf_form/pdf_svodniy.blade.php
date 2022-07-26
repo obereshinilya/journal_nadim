@@ -1,5 +1,5 @@
 <style>
-    body { font-family: DejaVu Sans, sans-serif; font-size: 12px}
+    body { font-family: DejaVu Sans, sans-serif; font-size: 14px}
 
     .itemInfoTable th, .itemInfoTable td{
         border: 1px solid black;
@@ -15,6 +15,7 @@
     table th{
         background-color: darkgrey;
     }
+
 </style>
 
 <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
@@ -39,25 +40,28 @@
 
     <div id="redirect">
 
-    <div id="tableDiv" style="width: 40%; margin-left: 30%">
-        <table id="statickItemInfoTable" class="itemInfoTable" style="">
-            <thead>
-            <tr>
-                <th rowspan="2" style="width: 10%; text-align: center">Час</th>
-                <th colspan="2" style="width: 20%; text-align: center">Ямсовей (сеноман)</th>
-                <th rowspan="2" style="width: 10%; text-align: center">Q ННГДУ</th>
-            </tr>
-            <tr>
-                <th style="width: 10%; text-align: center">P вых</th>
-                <th style="width: 10%; text-align: center">Q</th>
-            </tr>
-            </thead>
-            <tbody id="time_id">
+        <div id="tableDiv" style="width: 80%; margin-left: 10%">
+            <table id="statickItemInfoTable" class="itemInfoTable">
+                <thead>
+                <tr>
+                    <th rowspan="2" style="width: 10%; text-align: center">Час</th>
+                    <th colspan="2" style="width: 20%; text-align: center">Ямсовейское НГКМ</th>
+                    <th colspan="2" style="width: 20%; text-align: center">Юбилейное  НГКМ</th>
+                    <th rowspan="2" style="width: 10%; text-align: center">Q ННГДУ</th>
+                </tr>
+                <tr>
+                    <th style="width: 10%; text-align: center">P вых</th>
+                    <th style="width: 10%; text-align: center">Q</th>
+                    <th style="width: 10%; text-align: center">P вых</th>
+                    <th style="width: 10%; text-align: center">Q</th>
+                </tr>
+                </thead>
+                <tbody id="time_id">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-    </div>
+        </div>
     <div style="margin-top: 25%">
         <span style="text-decoration:underline; margin-left: 45%; font-size: 20px">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; / &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
     </div>
@@ -82,22 +86,20 @@
                  url: '/get_svodniy/'+document.getElementById('date').textContent,
                  method: 'GET',
                  success: function (res) {
-                     var time_id = ''
                      for (var j of res){
-
                          var body = document.getElementById('time_id')
                          body.innerText = ''
-                             for (var i=0; i<24; i++) {
-                                 var tr=document.createElement('tr')
-                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${i+':00'}</p></td>`
-                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['p']}</p></td>`
-                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q']}</p></td>`
-                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q']}</p></td>`
-                                 body.appendChild(tr);
-                             }
-
+                         for (var i=0; i<24; i++) {
+                             var tr=document.createElement('tr')
+                             tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${i+':00'}</p></td>`
+                             tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['p_yams']}</p></td>`
+                             tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q_yams']}</p></td>`
+                             tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['p_yub']}</p></td>`
+                             tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q_yub']}</p></td>`
+                             tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q']}</p></td>`
+                             body.appendChild(tr);
+                         }
                      }
-
                  },
                  async:true
              })

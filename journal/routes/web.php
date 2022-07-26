@@ -22,7 +22,10 @@ use Illuminate\Support\Facades\Auth;
     //Для добавления в крон
     Route::get('/create_param/{params_type}', [Controllers\TestController::class, 'test']);     //создание тестовых данных
     Route::get('/create_record_rezhim_dks', [Controllers\TestController::class, 'create_record_rezhim_dks']);     //запись для отчета р\4 часа
-    Route::get('/create_xml/{hours_xml}', [Controllers\XMLController::class, 'create_xml'])->name('create_xml');
+    Route::get('/create_xml/{hours_xml}', [Controllers\XMLController::class, 'create_xml'])->name('create_xml'); //отправка xml
+    Route::get('/create_record_svodniy', [Controllers\BalansController::class, 'create_record_svodniy'])->name('create_record_svodniy'); //Создание строк в сводном отчете каждый час в конце часа
+    Route::get('/create_record_valoviy', [Controllers\BalansController::class, 'create_record_valoviy'])->name('create_record_valoviy'); //Создание строк в валовом отчете каждый час в конце часа
+
 
     //Изменение test_table
     Route::get('/signal_settings', [Controllers\TestTableController::class, 'settings']);
@@ -60,21 +63,37 @@ use Illuminate\Support\Facades\Auth;
     Route::get('/get_gpa_rezhim_report_data/{date}/{dks}', [Controllers\BalansController::class, 'get_gpa_rezhim_report_data'])->name('get_gpa_rezhim_report_data');
     Route::get('/print_gpa_rezhim_report/{date}/{dks}', [Controllers\BalansController::class, 'print_gpa_rezhim_report'])->name('print_gpa_rezhim_report');
         //Сводный отчет ННГДУ
-    Route::get('/open_svodniy', [Controllers\BalansController::class, 'open_svodniy'])->name('open_svodniy');
-    Route::get('/get_svodniy/{date}', [Controllers\BalansController::class, 'get_svodniy'])->name('get_svodniy');
-    Route::get('/print_svodniy/{date}', [Controllers\BalansController::class, 'print_svodniy'])->name('print_svodniy');
+    Route::get('/open_svodniy', [Controllers\BalansController::class, 'open_svodniy'])->name('open_svodniy');   //Открывает главную
+    Route::get('/get_svodniy/{date}', [Controllers\BalansController::class, 'get_svodniy'])->name('get_svodniy');   //Получаем инфу в таблицу
+    Route::get('/print_svodniy/{date}', [Controllers\BalansController::class, 'print_svodniy'])->name('print_svodniy');  //Отправляем на печать
+    Route::get('/svodniy_setting', [Controllers\BalansController::class, 'svodniy_setting'])->name('svodniy_setting');  //Переход на страницу настройки
+    Route::get('/get_all_params', [Controllers\MainTableController::class, 'get_all_params'])->name('get_all_params');   //Получаем все параметры (без объектов)
+    Route::get('/save_param_svodniy/{params}/{hfrpok}', [Controllers\BalansController::class, 'save_param_svodniy'])->name('save_param_svodniy');  //Сохраняем настройки
+    Route::get('/get_setting_svodniy', [Controllers\BalansController::class, 'get_setting_svodniy'])->name('get_setting_svodniy');  //Для получения настроек
         //Валовая добыча
-    Route::get('/open_val', [Controllers\BalansController::class, 'open_val'])->name('open_val');
-    Route::get('/get_val/{date}', [Controllers\BalansController::class, 'get_val'])->name('get_val');
-    Route::get('/print_val/{date}', [Controllers\BalansController::class, 'print_val'])->name('print_val');
-    Route::get('/save_plan_month/{date}/{value}', [Controllers\BalansController::class, 'save_plan_month'])->name('save_plan_month');
+    Route::get('/open_val_year', [Controllers\BalansController::class, 'open_val'])->name('open_val');   //открытие формы
+    Route::get('/get_val/{date}/{type}', [Controllers\BalansController::class, 'get_val'])->name('get_val');  //получение данных для таблиц
+    Route::get('/print_val/{date}/{type}', [Controllers\BalansController::class, 'print_val'])->name('print_val'); //печать
+    Route::get('/save_plan_month/{date}/{value}/{mestorozhdeniye}', [Controllers\BalansController::class, 'save_plan_month'])->name('save_plan_month');   //сохранение годового плана
+    Route::get('/get_plan/{date}', [Controllers\BalansController::class, 'get_plan'])->name('get_plan'); //получение планов на год по месторождениям
+    Route::get('/valoviy_setting', [Controllers\BalansController::class, 'valoviy_setting'])->name('valoviy_setting');  //Переход на страницу настройки
+    Route::get('/get_setting_valoviy', [Controllers\BalansController::class, 'get_setting_valoviy'])->name('get_setting_valoviy');  //Для получения настроек
+    Route::get('/save_param_valoviy/{params}/{hfrpok}', [Controllers\BalansController::class, 'save_param_valoviy'])->name('save_param_valoviy');  //Сохраняем настройки
+
+    Route::get('/open_val_month', [Controllers\BalansController::class, 'open_val_month'])->name('open_val_month');   //открытие формы
+    Route::get('/open_val_day', [Controllers\BalansController::class, 'open_val_day'])->name('open_val_day');   //открытие формы
+
+
         //Балансовый
     Route::get('/open_balans', [Controllers\BalansController::class, 'open_balans'])->name('open_balans');
     Route::get('/get_balans/{date}', [Controllers\BalansController::class, 'get_balans'])->name('get_balans');
     Route::get('/print_balans/{date}', [Controllers\BalansController::class, 'print_balans'])->name('print_balans');
 
 
-    //ГЛАВНАЯ ТАБЛИЦА
+
+
+
+//ГЛАВНАЯ ТАБЛИЦА
     Route::post('/add-index', [Controllers\MainTableController::class, 'add_index']);
     Route::get('/maintable', [Controllers\MainTableController::class, 'index']);
     Route::get('/getmaintable', [Controllers\MainTableController::class, 'getMainTableInfo']);

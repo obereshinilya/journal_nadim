@@ -56,31 +56,37 @@
                 side_tree.className='side_tree';
                 var new_data = `<div style="margin-right: 10px">
                                     <ul>
-                                        <li><a id="1" class="tableItem">Режим работы ГПА</a>
+                                        <li><a id="1" class="tableItem">Режим работы ГПА</a></li>
                                     </ul>
 
                                     <ul>
-                                        <li><a id="2" id="null" class="tableItem">Режим работы ГПА<img class="treePlusIcon" src="http://127.0.0.1:8000/assets/images/icons/plus.png"></a>
-                                            <ul hidden="true">
+                                        <li><a id="2" id="null" class="tableItem">Режим работы ГПА</a>
+                                            <ul>
                                                 <li><a id="21" class="tableItem">ДКС1</a>
                                                 <li><a id="22" class="tableItem">ДКС2</a>
                                             </ul>
                                         </li>
                                     </ul>
                                     <ul>
-                                        <li><a id="3" class="tableItem">Сводный отчет ННГДУ</a>
+                                        <li><a id="3" class="tableItem">Сводный отчет ННГДУ</a></li>
                                     </ul>
                                     <ul>
-                                        <li><a id="4" class="tableItem">Валовая добыча</a>
-
+                                        <li><a id="4" class="tableItem">Балансовый отчет</a>
+                                            <ul>
+                                                <li><a id="41" class="tableItem">Год</a></li>
+                                                <li><a id="42" class="tableItem">Месяц</a></li>
+                                                <li><a id="43" class="tableItem">Сутки</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                    <ul>
-                                        <li><a id="5" class="tableItem">Балансовый отчет</a>
 
-                                    </ul>
                                 </div>`
-
+            //         <ul>
+            //         <li><a id="5" class="tableItem">Балансовый отчет</a>
+            //
+            // </ul>
                 side_tree.innerHTML=new_data;
+                document.getElementById('side_menu').style.width = 'auto'
                 document.getElementById('side_menu').insertBefore(side_tree, document.getElementById('show-hide-side-menu-btn'))
                 tableItems=$('.tableItem').click(ItemClick);
                 var choiced = localStorage.getItem('choiced_id')
@@ -128,14 +134,15 @@
                 document.location.href = '/get_gpa_rezhim_report/'+vibrano.slice(1)
             } else if(vibrano === '3'){
                 document.location.href = '/open_svodniy'
-            }else if(vibrano === '4'){
-                document.location.href = '/open_val'
+            }else if(vibrano === '41'){
+                document.location.href = '/open_val_year'
+            }else if(vibrano === '42'){
+                document.location.href = '/open_val_month'
+            }else if(vibrano === '43'){
+                document.location.href = '/open_val_day'
             }else if(vibrano === '5'){
                 document.location.href = '/open_balans'
             }
-
-
-
         }
 
 

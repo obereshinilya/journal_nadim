@@ -103,45 +103,45 @@
 
 
             var choiced_item = document.getElementsByClassName('tableItem choiced')[0]
-            var parentId = choiced_item.getAttribute('data-id')
-            var name_parent = choiced_item.textContent
-            var for_create_object = document.getElementById('child_name')
-            if (for_create_object){
-                document.getElementsByClassName('parent')[0].value = name_parent
-                document.getElementsByClassName('parent')[1].value = name_parent
-                // document.getElementById('parent').value = name_parent
-                document.getElementById('parentId_buff').textContent = parentId
-            }
+            if (choiced_item){
+                var parentId = choiced_item.getAttribute('data-id')
+                var name_parent = choiced_item.textContent
+                var for_create_object = document.getElementById('child_name')
+                if (for_create_object){
+                    document.getElementsByClassName('parent')[0].value = name_parent
+                    document.getElementsByClassName('parent')[1].value = name_parent
+                    // document.getElementById('parent').value = name_parent
+                    document.getElementById('parentId_buff').textContent = parentId
+                }
 
-            $.ajax({
-                url:'/get_parent/'+parentId,
-                type:'GET',
-                success:(res)=>{
+                $.ajax({
+                    url:'/get_parent/'+parentId,
+                    type:'GET',
+                    success:(res)=>{
 
-                    visible_rows = new Array()
-                    for (var i of Object.values(res)){
-                        visible_rows.push(i)
-                    }
-                    setTimeout(function (){
-                        var all_tr = document.querySelectorAll('tbody tr')
-                        for (var i of all_tr){
-                            // console.log(i.getAttribute('data-id'))
-                            if (visible_rows.includes(Number (i.getAttribute('data-id'))) ){
-                                i.style.display = 'none'
-                            } else {
-                                i.style.display = ''
-                            }
+                        visible_rows = new Array()
+                        for (var i of Object.values(res)){
+                            visible_rows.push(i)
                         }
-                    }, 100)
-                }, async: false
-            })
-
-
-
-
-
-
-
+                        setTimeout(function (){
+                            var all_tr = document.querySelectorAll('tbody tr')
+                            for (var i of all_tr){
+                                // console.log(i.getAttribute('data-id'))
+                                if (visible_rows.includes(Number (i.getAttribute('data-id'))) ){
+                                    i.style.display = 'none'
+                                } else {
+                                    i.style.display = ''
+                                }
+                            }
+                        }, 100)
+                    }, async: false
+                })
+            } else {
+                var all_tr = document.querySelectorAll('tbody tr')
+                for (var i of all_tr){
+                    i.style.display = ''
+                }
+            }
 
         }
 

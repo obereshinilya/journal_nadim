@@ -26,6 +26,7 @@
             <h3 >Сводный отчет Надымского НГДУ</h3>
             <div style="position: absolute; right: 11%">
                 <button  id="print" class="button button1">Печать</button>
+                <button  id="setting" class="button button1">Настройка</button>
             </div>
         </div>
     @include('include.choice_date')
@@ -38,15 +39,18 @@
 
 
 
-    <div id="tableDiv" style="width: 40%">
-        <table id="statickItemInfoTable" class="itemInfoTable" style="">
+    <div id="tableDiv" style="width: 50%">
+        <table id="statickItemInfoTable" class="itemInfoTable">
             <thead>
             <tr>
                 <th rowspan="2" style="width: 10%; text-align: center">Час</th>
-                <th colspan="2" style="width: 20%; text-align: center">Ямсовей (сеноман)</th>
+                <th colspan="2" style="width: 20%; text-align: center">Ямсовейское НГКМ</th>
+                <th colspan="2" style="width: 20%; text-align: center">Юбилейное  НГКМ</th>
                 <th rowspan="2" style="width: 10%; text-align: center">Q ННГДУ</th>
             </tr>
             <tr>
+                <th style="width: 10%; text-align: center">P вых</th>
+                <th style="width: 10%; text-align: center">Q</th>
                 <th style="width: 10%; text-align: center">P вых</th>
                 <th style="width: 10%; text-align: center">Q</th>
             </tr>
@@ -78,6 +82,10 @@
             $('#print').click(function() {
                 window.location.href = '/print_svodniy/'+$('#table_date_start').val()
             });
+
+            $('#setting').click(function() {
+                window.location.href = '/svodniy_setting'
+            });
         })
 
          function get_table_data() {
@@ -86,29 +94,25 @@
                  url: '/get_svodniy/'+$('#table_date_start').val(),
                  method: 'GET',
                  success: function (res) {
-                     console.log(res)
-                     var time_id = ''
                      for (var j of res){
-
                          var body = document.getElementById('time_id')
                          body.innerText = ''
                              for (var i=0; i<24; i++) {
                                  var tr=document.createElement('tr')
                                  tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${i+':00'}</p></td>`
-                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['p']}</p></td>`
-                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q']}</p></td>`
+                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['p_yams']}</p></td>`
+                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q_yams']}</p></td>`
+                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['p_yub']}</p></td>`
+                                 tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q_yub']}</p></td>`
                                  tr.innerHTML+=`<td style="text-align: center; padding: 0px; min-width: 20px"><p>${res[i]['q']}</p></td>`
                                  body.appendChild(tr);
                              }
-
                      }
 
                  },
                  async:true
              })
         }
-
-
 
 
 
@@ -148,6 +152,10 @@
 
         input{
 
+        }
+
+        thead th {
+            position: sticky;
         }
     </style>
 

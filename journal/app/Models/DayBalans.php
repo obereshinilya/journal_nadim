@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BalansReport extends Model{
-    protected $table='public.balans_report';
+class DayBalans extends Model{
+    protected $table='public.valoviy_day';
     public $timestamps = false;
     public $primaryKey = 'id';
     protected $fillable = [
-        'params_resource', 'ymsovey', 'guid', 'data',
+        'id', 'hour', 'day', 'month', 'year', 'yams_yub', 'val'
     ];
 
 

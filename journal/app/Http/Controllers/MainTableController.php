@@ -99,6 +99,14 @@ class MainTableController extends Controller
             return false;
         }
     }
+
+    public function get_all_params(){
+        $data = TableObj::where('inout', '!=', '!')->select('hfrpok', 'namepar1')->get();
+        return $data;
+    }
+
+
+
 }
 
 ?>

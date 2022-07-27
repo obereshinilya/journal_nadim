@@ -33,15 +33,16 @@
     </style>
 <p id="plan_yams" style="display: none"></p>
 <p id="plan_yub" style="display: none"></p>
-    <div id="content-header">
-        <h4>Показатели Ямсовейского ГКМ</h4>
-        <button  id="graph_yams" class="button button1" style="margin-left: 70%">Графический вид</button>
+    <div id="content-header" style="display: inline-flex; width: 100%">
+        <h4 style="width: 30%">Показатели Ямсовейского ГКМ</h4>
+        <button  id="graph_yams" class="button button1" style="margin-left: 40%">Графический вид</button>
         <button  id="table_yams" class="button button1"  disabled="true" style="background-color: rgb(26, 181, 133)">Табличный вид</button>
     </div>
+    <div id="chart_yams" style="display: none; width: 100%">
+        <div id="timeline-chart" style="width: 100%"></div>
+    </div>
     <div id="tableDiv_yams" style="display: none; margin-top: 1%; overflow-x: auto">
-        <div id="chart_yams" style="display: none; width: 100%">
-            <div id="timeline-chart" style="width: 100%"></div>
-        </div>
+
         <table id="statickItemInfoTable_yams" class="itemInfoTable" style="width: auto; float:left; table-layout: fixed; display: block; overflow-x: auto; white-space: nowrap">
             <thead>
                 <tr>
@@ -53,7 +54,7 @@
             <tr><td><span style="text-align: left">Отклонение</span></td></tr>
             </tbody>
         </table>
-        <table id="itemInfoTable_yams" class="itemInfoTable" style="width: 87%; float:left; overflow-x: auto; display: block; white-space: nowrap">
+        <table id="itemInfoTable_yams" class="itemInfoTable" style="width: 65%; float:left; overflow-x: auto; display: block; white-space: nowrap">
             <thead>
                 <tr id="thead_yams">
                     <th  class="timeCell" style="width: 4%"><h4>00:00</h4></th>
@@ -97,15 +98,15 @@
     </div>
 
 
-    <div id="content-header">
-        <h4>Показатели Юбилейного ГКМ</h4>
-        <button  id="graph_yub" class="button button1" style="margin-left: 70%">Графический вид</button>
+    <div id="content-header" style="display: inline-flex; width: 100%">
+        <h4 style="width: 30%">Показатели Юбилейного ГКМ</h4>
+        <button  id="graph_yub" class="button button1" style="margin-left: 40%">Графический вид</button>
         <button  id="table_yub" class="button button1"  disabled="true" style="background-color: rgb(26, 181, 133)">Табличный вид</button>
     </div>
+    <div id="chart_yub" style="display: none; width: 100%">
+        <div id="timeline-chart" style="width: 100%"></div>
+    </div>
     <div id="tableDiv_yub" style="display: none">
-        <div id="chart_yub" style="display: none; width: 100%">
-            <div id="timeline-chart" style="width: 100%"></div>
-        </div>
         <table id="statickItemInfoTable_yub" class="itemInfoTable" style="width: auto; float:left; table-layout: fixed; display: block; overflow-x: auto; white-space: nowrap">
             <thead>
             <tr>
@@ -117,33 +118,33 @@
             <tr><td><span style="text-align: left">Отклонение</span></td></tr>
             </tbody>
         </table>
-        <table id="itemInfoTable_yub" class="itemInfoTable" style="width: 87%; float:left; overflow-x: auto; display: block; white-space: nowrap">
+        <table id="itemInfoTable_yub" class="itemInfoTable" style="width: 65%; float:left; overflow-x: auto; display: block; white-space: nowrap">
             <thead>
             <tr id="thead_yub">
-                <th  class="timeCell" style="width: 4%"><h4>00:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>01:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>02:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>03:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>04:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>05:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>06:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>07:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>08:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>09:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>10:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>11:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>12:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>13:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>14:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>15:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>16:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>17:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>18:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>19:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>20:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>21:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>22:00</h4></th>
-                <th  class="timeCell" style="width: 4%"><h4>23:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>00:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>01:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>02:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>03:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>04:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>05:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>06:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>07:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>08:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>09:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>10:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>11:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>12:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>13:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>14:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>15:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>16:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>17:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>18:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>19:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>20:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>21:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>22:00</h4></th>
+                <th  class="timeCell" style="width: 2%"><h4>23:00</h4></th>
             </tr>
             </thead>
             <tbody>
@@ -163,7 +164,8 @@
 
     <style>
         .content {
-            width: calc(100% - 40px);
+            overflow-x: hidden;
+            width: 100%;
         }
 
     </style>
@@ -177,7 +179,7 @@
                 get_table_data();
                 $('#table_yams').trigger('click')
                 $('#table_yub').trigger('click')
-                remove_chart()
+                // remove_chart()
             })
             get_plan()
             get_table_data();
@@ -207,6 +209,7 @@
                 document.getElementById('statickItemInfoTable_yams').style.display = 'block'
                 document.getElementById('itemInfoTable_yams').style.display = 'block'
                 document.getElementById('chart_yams').style.display = 'none'
+                remove_chart('yams')
             });
             $('#graph_yub').click(function() {
                 document.getElementById('table_yub').style.background = 'white'
@@ -230,6 +233,7 @@
                 document.getElementById('statickItemInfoTable_yub').style.display = 'block'
                 document.getElementById('itemInfoTable_yub').style.display = 'block'
                 document.getElementById('chart_yub').style.display = 'none'
+                remove_chart('yub')
             });
         })
         function get_plan(){
@@ -237,7 +241,6 @@
                 url: '/get_plan/'+$('#table_date_start').val().split('-')[0],
                 method: 'GET',
                 success: function (res) {
-                    console.log(res)
                     document.getElementById('plan_yams').textContent = Number (res['yams'])
                     document.getElementById('plan_yub').textContent = Number (res['yub'])
                 },
@@ -285,22 +288,24 @@
                             tr_otkl.appendChild(td_otkl);
                         }
                     }
-                    document.getElementById('tableDiv_yub').style.display = 'inline'
-                    document.getElementById('tableDiv_yams').style.display = 'inline'
+                    document.getElementById('tableDiv_yub').style.display = 'inline-block'
+                    document.getElementById('tableDiv_yams').style.display = 'inline-block'
                  },
                  async:false
              })
         }
-        function remove_chart() {
-            try {
-                chart_yams.destroy()
-            } catch (e) {
+        function remove_chart(type) {
+            if (type === 'yams'){
+                try {
+                    chart_yams.destroy()
+                } catch (e) {
+                }
+            }else {
+                try {
+                    chart_yub.destroy()
+                } catch (e) {
 
-            }
-            try {
-                chart_yub.destroy()
-            } catch (e) {
-
+                }
             }
         }
 
@@ -408,7 +413,6 @@
             opacity: 1;
             border: 0;
         }
-
     </style>
 
 

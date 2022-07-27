@@ -26,7 +26,7 @@
         <div id="content-header" style="display: none"></div>
         <div style="display:inline-block">
             <button class="button button1" id="create_obj">Добавление объекта</button>
-            <button class="button button1" id="create_signal">Добавление сгнала</button>
+            <button class="button button1" id="create_signal">Добавление сигнала</button>
         </div>
 
     </div>

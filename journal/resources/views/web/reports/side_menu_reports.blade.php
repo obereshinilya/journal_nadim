@@ -36,6 +36,11 @@
         });
         $('#side_menu').resize(function(){
             $('#main_content').width($(document.body).width()-$('#side_menu').width()-45)
+            try {
+                // document.getElementById('tableDiv_yams').style.width = '87%'
+            }catch ( e){
+
+            }
         })
 
         $(window).resize(function(){

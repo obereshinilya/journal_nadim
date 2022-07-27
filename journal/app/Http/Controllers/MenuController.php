@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Log;
 use Illuminate\Http\Request;
-use App\Models\GD_obj;
 
 class MenuController extends Controller
 {

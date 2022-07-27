@@ -23,6 +23,7 @@ class HoursController extends Controller
                     $all_param_hour[$l][$i]['id'] = $arr->id;
                     $all_param_hour[$l][$i]['hfrpok_id'] = $arr->hfrpok_id;
                     $all_param_hour[$l][$i]['val'] = $arr->val;
+                    $all_param_hour[$l][$i]['change_by'] = $arr->change_by;
                     $all_param_hour[$l][$i]['xml_create'] = $arr->xml_create;
                     $all_param_hour[$l][$i]['manual'] = $arr->manual;
                     $all_param_hour[$l][$i]['timestamp'] = $arr->timestamp;

@@ -26,12 +26,13 @@ class SutController extends Controller
                     $all_param_sut[$l][$i]['hfrpok_id'] = $arr->hfrpok_id;
                     $all_param_sut[$l][$i]['val'] = $arr->val;
                     $all_param_sut[$l][$i]['xml_create'] = $arr->xml_create;
+                    $all_param_sut[$l][$i]['change_by'] = $arr->change_by;
                     $all_param_sut[$l][$i]['manual'] = $arr->manual;
                     $all_param_sut[$l][$i]['timestamp'] = $arr->timestamp;
                     $all_param_sut[$l]['charts'] = true;
                 } catch (\Throwable $e){
                     $all_param_sut[$l][$i]['id'] = false;
-                    $all_param_sut[$l]['charts'] = false;
+//                    $all_param_sut[$l]['charts'] = false;
                 }
                 $disp_date_time = date('Y-m-d H:i', strtotime($disp_date_time. '+1 days'));
             }

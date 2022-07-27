@@ -161,7 +161,7 @@
                             var xaxis = [];
                             for (var id = 0; id < row['min_params'].length; id++) {
                                 if (row['min_params'][id] !== null) {
-                                    tr.innerHTML += `<td data-time-id="${id}" class="hour-value-${row['hfrpok']}" data-time="${Number (5*id)}"><span class="changeable_td" style="background-color: rgba(0, 0, 0, 0)" oncopy="return false" oncut="return false" onpaste="return false" data-column="val" numbercolumn="${id}" hfrpok="${row['hfrpok']}" data-row-id="${id}" spellcheck="false" data-type="float">${Object.values(row['min_params'][id])[0]}</span></td>`
+                                    tr.innerHTML += `<td data-time-id="${id}" class="hour-value-${row['hfrpok']}" data-time="${Number (5*id)}"><span class="changeable_td" style="background-color: rgba(0, 0, 0, 0)" oncopy="return false" oncut="return false" onpaste="return false" data-column="val" numbercolumn="${id}" hfrpok="${row['hfrpok']}" data-row-id="${id}" spellcheck="false" data-type="float" >${Object.values(row['min_params'][id])[0]}</span></td>`
                                     xaxis.push(Number(id*5))
                                     data.push(parseFloat(Object.values(row['min_params'][id])[0]))
                                     visible_chart = true

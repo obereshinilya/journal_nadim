@@ -144,7 +144,6 @@
             document.location.href = '/minutes'
         }
 
-
         function get_table_data(data_id) {
 
             $('.tableItemInfoChart').remove();
@@ -185,7 +184,7 @@
                                     tr.innerHTML += `<td data-time-id="${id}" class="hour-value-${row['hfrpok']}" data-time="${row[id]['timestamp']}" style="background-color: #1ab585"><span xml-create="true" numbercolumn="${id}">${row[id]['val']}</span></td>`
                                 } else{
                                     if (Boolean(row[id]['manual'])===true){
-                                        tr.innerHTML += `<td data-time-id="${id}" class="hour-value-${row['hfrpok']}" data-time="${row[id]['timestamp']}" style="background-color: indianred" ><span class="changeable_td" numbercolumn="${id}" style="background-color: indianred" oncopy="return false" oncut="return false" onpaste="return false" data-column="val" data-row-id="${row[id]['id']}"  spellcheck="false" data-type="float">${row[id]['val']}</span></td>`
+                                        tr.innerHTML += `<td data-time-id="${id}" class="hour-value-${row['hfrpok']}" data-time="${row[id]['timestamp']}" style="background-color: indianred" ><span class="changeable_td" numbercolumn="${id}" style="background-color: indianred" oncopy="return false" oncut="return false" onpaste="return false" data-column="val" data-row-id="${row[id]['id']}"  spellcheck="false" data-type="float" val="${row[id]['val']}" name="${row[id]['change_by']}" onmouseover="this.textContent = 'Изменил: ' + this.getAttribute('name')" onmouseout="this.textContent = this.getAttribute('val')">${row[id]['val']}</span></td>`
                                     }
                                     else{
                                         tr.innerHTML += `<td data-time-id="${id}" class="hour-value-${row['hfrpok']}" data-time="${row[id]['timestamp']}"><span class="changeable_td" contenteditable="true" style="background-color: white" oncopy="return false" numbercolumn="${id}" oncut="return false" onpaste="return false" data-column="val" data-row-id="${row[id]['id']}"  spellcheck="false" data-type="float">${row[id]['val']}</span></td>`
@@ -278,6 +277,7 @@
 
             $('#main_content').width($(document.body).width()-$('#side_menu').width()-50);
         }
+
 
 
     </script>

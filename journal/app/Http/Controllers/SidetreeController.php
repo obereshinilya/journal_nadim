@@ -6,6 +6,7 @@ use App\Models\Hour_params;
 use App\Models\Min_params;
 use App\Models\Sut_params;
 use App\Models\User;
+use App\Models\UserAuth;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use App\Models\TableObj;
@@ -62,15 +63,28 @@ class SidetreeController extends Controller
     public function change_time_params(Request $request, $type){
         try{
             if ($type == 'sutki'){
+                $ip = \request()->ip();
+                try {
+                    $change_by = UserAuth::orderbyDesc('id')->where('ip', '=', $ip)->first()->username;
+                }catch (\Throwable $e){
+                    $change_by = 'Неизвестно';
+                }
                 Sut_params::where('id', '=', $request->id)
                 ->update([
                     'manual'=>true,
-                    'val'=>$request->value
+                    'val'=>$request->value,
+                    'change_by'=>$change_by,
                 ]);
                 return [true];
             } else{
+                $ip = \request()->ip();
+                try {
+                    $change_by = UserAuth::orderbyDesc('id')->where('ip', '=', $ip)->first()->username;
+                }catch (\Throwable $e){
+                    $change_by = 'Неизвестно';
+                }
                 DB::table('app_info.hour_params')->where('id', $request->id)->
-                update([$request->column=>$request->value, 'manual'=>true]);
+                update([$request->column=>$request->value, 'manual'=>true, 'change_by'=>$change_by]);
                 return [true];
             }
         }

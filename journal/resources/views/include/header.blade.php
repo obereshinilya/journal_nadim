@@ -31,6 +31,8 @@
                         </div>
                     </ul>
                 </li>
+                <li><a href="/open_user_log" style="padding-right: 37px;">Журнал действий оператора<i class="fa fa-angle-down"></i></a>
+
                 </li>
 
             </ul>

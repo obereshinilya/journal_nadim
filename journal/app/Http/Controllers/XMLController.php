@@ -25,6 +25,7 @@ use LibXMLError;
 class XMLController extends Controller
 {
     public function journal_xml(){
+        $new_log  = (new MainTableController)->create_log_record('Открыл журнал отправки XML');
         return view('web.journal_xml');
     }
 

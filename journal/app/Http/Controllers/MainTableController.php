@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\TableObj;
+use App\Models\UserAuth;
 use Illuminate\Http\Request;
 use PHPUnit\Exception;
 
@@ -104,6 +106,25 @@ class MainTableController extends Controller
         $data = TableObj::where('inout', '!=', '!')->select('hfrpok', 'namepar1')->get();
         return $data;
     }
+
+
+    public function create_log_record($message){
+        $record['ip'] = \request()->ip();
+        $record['event'] = $message;
+        try {
+            $data_user = UserAuth::orderbyDesc('id')->where('ip', '=', $record['ip'])->first();
+            $record['username'] = $data_user->username;
+            $record['domain_name'] = $data_user->domain_name;
+        } catch (\Throwable $e){
+            $record['username'] = 'Неизвестно';
+            $record['domain_name'] = 'Неизвестно';
+        }
+        if (Log::orderbydesc('id')->first()->event != $record['event']){
+            Log::create($record);
+        }
+    }
+
+
 
 
 

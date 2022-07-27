@@ -4,11 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
-
+    Route::get('/test', [Controllers\MainTableController::class, 'create_log_record'])->name('create_log_record');
     //Главная
     Route::get('/', [Controllers\MenuController::class, 'index_hour'])->name('gazprom');
     Route::get('/sut', [Controllers\MenuController::class, 'index_sut']);
     Route::get('/minutes', [Controllers\MenuController::class, 'index_minut']);
+
+    //Журнал действий оператора
+    Route::get('/open_user_log', [Controllers\MenuController::class, 'open_user_log']);
+    Route::get('/get_user_log', [Controllers\MenuController::class, 'get_user_log']);
 
     //По-новому минутные параметры
     Route::get('/minutes_param/{date}/{hour}', [Controllers\MinutesController::class, 'get_minute_param']);

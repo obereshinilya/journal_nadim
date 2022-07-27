@@ -13,13 +13,18 @@ use Illuminate\Http\Request;use Illuminate\Support\Facades\DB;
 class TestTableController extends Controller
 {
     public function settings(){
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел настройки сигналов');
         $data = TableObj::where('inout', '!=', '!')->orderby('id')->get();
         return view('web.signal_settings', compact('data'));
     }
     public function signal_settings_store(Request $request){
         $data = $request->all();
+
         TableObj::where('hfrpok', '=', $data['hfrpok'])->first()
             ->update($data);
+        $name_signal = TableObj::where('hfrpok', '=', $data['hfrpok'])->first()->namepar1;
+        $new_log  = (new MainTableController)->create_log_record('Обновил сигнал '. $name_signal);
+
     }
 
     public function create(){
@@ -31,6 +36,7 @@ class TestTableController extends Controller
         $level = TableObj::where('id', '=', $data['parentId'])->select('level')->first();
         $level = $level['level'] +1;
         TableObj::create(['parentId'=>$data['parentId'],'namepar1'=>$data['namepar1'],'inout'=>'!', 'level'=>$level ]);
+        $new_log  = (new MainTableController)->create_log_record('Создал объект '. $data['namepar1']);
         return 'ok';
     }
 
@@ -47,6 +53,8 @@ class TestTableController extends Controller
             TableObj::create($to_table);
             $id = TableObj::orderbydesc('id')->select('id')->first();
             TableObj::where('id', '=', $id['id'])->first()->update(['hfrpok'=>$id['id']]);
+            $new_log  = (new MainTableController)->create_log_record('Создал сигнал '. $data['name_new_obj']);
+
             return 'ok';
         } catch (\Throwable $e){
             return $e;

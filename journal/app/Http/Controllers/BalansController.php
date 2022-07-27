@@ -21,11 +21,13 @@ use phpDocumentor\Reflection\Types\True_;
 class BalansController extends Controller
 {
     public function reports(){
+        $new_log  = (new MainTableController)->create_log_record('Открыл отчеты');
         return view('web.reports.REPORTS_MAIN');
     }
 
     public function gpa_rezhim()
     {
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел режим работы ГПА');
         return view('web.reports.open_gpa_rezhim');
     }
 
@@ -43,15 +45,17 @@ class BalansController extends Controller
 
     public function post_gpa_rezhim(Request $request)
     {
-        date_default_timezone_set('Europe/Moscow');
+//        date_default_timezone_set('Europe/Moscow');
         $data = $request->all();
         for ($i = 11; $i<17; $i++){
             if (Rezhim_gpa::orderbyDesc('id')->where('number_gpa', '=', $i)->first()->rezhim != $data['gpa'.$i]){
+                $new_log  = (new MainTableController)->create_log_record('Изменил режим работы ГПА'.$i);
                 Rezhim_gpa::create(['number_gpa'=>$i, 'rezhim'=>$data['gpa'.$i], 'timestamp'=>date('Y-m-d H:i:s')]);
             }
         }
         for ($i = 21; $i<27; $i++){
             if (Rezhim_gpa::orderbyDesc('id')->where('number_gpa', '=', $i)->first()->rezhim != $data['gpa'.$i]){
+                $new_log  = (new MainTableController)->create_log_record('Изменил режим работы ГПА'.$i);
                 Rezhim_gpa::create(['number_gpa'=>$i, 'rezhim'=>$data['gpa'.$i], 'timestamp'=>date('Y-m-d H:i:s')]);
             }
         }
@@ -60,6 +64,7 @@ class BalansController extends Controller
 
     public function get_gpa_rezhim_report($dks)
     {
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел отчет по режимам работы ГПА ДКС'.$dks);
         return view('web.reports.open_gpa_rezhim_report', compact('dks'));
     }
     public function get_gpa_rezhim_report_data($date, $dks)
@@ -91,11 +96,12 @@ class BalansController extends Controller
     }
 
     public function print_gpa_rezhim_report($date, $dks){
-
+        $new_log  = (new MainTableController)->create_log_record('Распечатал отчет по режимам работы ГПА для ДКС'. $dks);
         return view('web.pdf_form.pdf_rezhim_dks', compact( 'dks', 'date'));
     }
 
     public function open_svodniy(){
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел сводный отчет');
         return view('web.reports.open_svodniy');
     }
     public function get_svodniy($date){
@@ -147,13 +153,15 @@ class BalansController extends Controller
     }
 
     public function print_svodniy($date){
-
+        $new_log  = (new MainTableController)->create_log_record('Распечатал сводный отчет за ' . $date);
         return view('web.pdf_form.pdf_svodniy', compact( 'date'));
     }
     public function svodniy_setting(){
+        $new_log  = (new MainTableController)->create_log_record('Открыл настройки сводного отчета');
         return view('web.reports.setting_svodniy');
     }
     public function save_param_svodniy($params, $hfrpok){
+        $new_log  = (new MainTableController)->create_log_record('Изменил настройки сводного отчета');
         try {
             $config = SvodniyReport::orderbyDesc('id')->where('config', '=', true)->first()->update([$params=>$hfrpok]);
             return true;
@@ -172,9 +180,16 @@ class BalansController extends Controller
 
 /////По валовому
     public function open_val(){    //открытие формы
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел годовой балансовый отчет');
         return view('web.reports.open_val_year');
     }
     public function save_plan_month($date, $value, $mestorozhdeniye){   //сохранение годового
+        if ($mestorozhdeniye == 'yams'){
+            $text = 'Ямсовейского ГКМ';
+        } else{
+            $text = 'Юбилейного ГКМ';
+        }
+        $new_log  = (new MainTableController)->create_log_record('Изменил план за '.$date.' '.$text);
         $data = PlanBalans::where('year', '=', $date)->where('yams_yub', '=', $mestorozhdeniye)->get();
         if ($data->isEmpty()){
             PlanBalans::create([
@@ -325,7 +340,8 @@ class BalansController extends Controller
     }
 
     public function valoviy_setting(){
-            return view('web.reports.setting_valoviy');
+        $new_log  = (new MainTableController)->create_log_record('Открыл настройки балансового отчета');
+        return view('web.reports.setting_valoviy');
     }
 
     public function get_setting_valoviy(){
@@ -340,22 +356,28 @@ class BalansController extends Controller
         }
     }
     public function save_param_valoviy($params, $hfrpok){
-            $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', $params)->first()->update(['val'=>$hfrpok]);
+        $new_log  = (new MainTableController)->create_log_record('Изменил настройки балансового отчета');
+        $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', $params)->first()->update(['val'=>$hfrpok]);
     }
 
     public function print_val($date, $type){
         if ($type == 'year'){
+            $new_log  = (new MainTableController)->create_log_record('Распечатал годовой балансовый отчет за '. $date);
             return view('web.pdf_form.pdf_val_year', compact( 'date'));
         } elseif($type == 'month'){
+            $new_log  = (new MainTableController)->create_log_record('Распечатал месячный балансовый отчет за '. $date);
             return view('web.pdf_form.pdf_val_month', compact( 'date'));
         } else{
+            $new_log  = (new MainTableController)->create_log_record('Распечатал суточный балансовый отчет за '. $date);
             return view('web.pdf_form.pdf_val_day', compact( 'date'));
         }
     }
     public function open_val_month(){    //открытие формы
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел месячный балансовый отчет');
         return view('web.reports.open_val_month');
     }
     public function open_val_day(){    //открытие формы
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел суточный балансовый отчет');
         return view('web.reports.open_val_day');
     }
 

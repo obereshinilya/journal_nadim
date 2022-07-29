@@ -22,10 +22,14 @@
         <link rel="stylesheet" href="{{asset('assets/libs/tooltip/tooltip.css')}}">
     @endpush
         <div style="display: inline-flex; width: 100%">
-            <h3 >Валовая добыча газа Надымского НГДУ (за сутки)</h3>
-                <button  id="print" class="button button1" style="margin-left: 60%; margin-top: 1%">Печать</button>
+            <h3>Валовая добыча газа Надымского НГДУ (за сутки)</h3>
+            <div class="date-input-group" style="margin-left: 2%">
+                <input type="date" id="table_date_start" class="date_input" required onkeydown="return false">
+                <label for="table_date_start" class="table_date_label">Дата</label>
+            </div>
+                <button  id="print" class="button button1" style="margin-left: 50%; margin-top: 1%">Печать</button>
         </div>
-    @include('include.choice_date')
+{{--    @include('include.choice_date')--}}
     <style>
         .choice-period-btn {
             display: none;
@@ -173,7 +177,9 @@
     <script>
 
         $(document).ready(function () {
+            var today = new Date();
             $('#table_date_start').val(today.toISOString().substring(0, 10))
+            document.getElementById("table_date_start").setAttribute("max", today.toISOString().substring(0, 10));
             $('#table_date_start').change(function () {
                 get_plan()
                 get_table_data();
@@ -413,6 +419,74 @@
             opacity: 1;
             border: 0;
         }
+        .date_input{
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid #9b9b9b;
+            outline: 0;
+            font-size: 1.3rem;
+            color: black;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+        }
+
+        .date-input-group{
+            /*width: 30%;*/
+            margin: 8px 5px;
+            display: table-cell;
+            padding-left: 5px;
+            padding-right: 10px;
+            float:left;
+        }
+
+        input[type=date]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            display: none;
+        }
+        input[type=date]::-webkit-clear-button {
+            -webkit-appearance: none;
+            display: none;
+        }
+
+
+
+        .date_input::placeholder {
+            color: transparent;
+        }
+        .date_input:placeholder-shown ~ .form__label {
+            font-size: 1.3rem;
+            cursor: text;
+            top: 20px;
+        }
+
+        .table_date_label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: #9b9b9b;
+        }
+        .date_input:focus {
+            /*padding-bottom: 6px;*/
+            font-weight: 700;
+            /*border-width: 3px;*/
+            border-image: linear-gradient(to right, black, gray);
+            border-image-slice: 1;
+        }
+        .date_input:focus ~ .table_date_label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: black;
+            font-weight: 700;
+        }
+
+
     </style>
 
 

@@ -85,6 +85,10 @@
                                         </li>
                                     </ul>
 
+                                    <ul>
+                                        <li><a id="5" class="tableItem">Журнал смены</a></li>
+                                    </ul>
+
                                 </div>`
             //         <ul>
             //         <li><a id="5" class="tableItem">Балансовый отчет</a>
@@ -146,7 +150,7 @@
             }else if(vibrano === '43'){
                 document.location.href = '/open_val_day'
             }else if(vibrano === '5'){
-                document.location.href = '/open_balans'
+                document.location.href = '/open_journal_smeny'
             }
         }
 

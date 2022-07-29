@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-use App\Models\Vesta;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class FirstSheetImport implements ToModel

@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
         <link rel="stylesheet" href="{{asset('assets/libs/tooltip/tooltip.css')}}">
     @endpush
+    <p style="display: none" id="alarm">{{$data}}</p>
     <div>
         <h3>Выбор сигнала-источника данных</h3>
 
@@ -56,6 +57,9 @@
         var header_content = 'Настройка';
 
         $(document).ready(function () {
+            if (document.getElementById('alarm').textContent === 'false'){
+                alert('Выберите все сигналы!')
+            }
             click_side_menu_func = show_hide;
             $.ajax({
                 url: '/get_all_params',
@@ -142,22 +146,36 @@
                 method: 'GET',
                 success: function (res) {
                     var btn = ''
-                    var hfrpok = res[param_name].split('.')[0]
-                    var table = document.getElementById('statickItemInfoTable')
-                    var rows = table.getElementsByTagName('tr')
-                    for (var row of rows){
-                        if (row.getAttribute('data-id') === hfrpok){
+                    if (res[param_name] === null){
+                        var table = document.getElementById('statickItemInfoTable')
+                        var rows = table.getElementsByTagName('tr')
+                        for (var row of rows){
                             btn = row.getElementsByTagName('button')[0]
-                            btn.setAttribute('disabled', true)
-                            btn.innerText = 'Выбрано'
-                            btn.style.background = '#d8d8d8'
-                        } else {
-                            btn = row.getElementsByTagName('button')[0]
-                            if (btn !== undefined){
+                            try {
                                 btn.removeAttribute('disabled')
                                 btn.innerText = 'Выбрать'
                                 btn.style.background = 'white'
+                            } catch (e){
+                            }
+                        }
+                    } else {
+                        var hfrpok = res[param_name].split('.')[0]
+                        var table = document.getElementById('statickItemInfoTable')
+                        var rows = table.getElementsByTagName('tr')
+                        for (var row of rows){
+                            if (row.getAttribute('data-id') === hfrpok){
+                                btn = row.getElementsByTagName('button')[0]
+                                btn.setAttribute('disabled', true)
+                                btn.innerText = 'Выбрано'
+                                btn.style.background = '#d8d8d8'
+                            } else {
+                                btn = row.getElementsByTagName('button')[0]
+                                if (btn !== undefined){
+                                    btn.removeAttribute('disabled')
+                                    btn.innerText = 'Выбрать'
+                                    btn.style.background = 'white'
 
+                                }
                             }
                         }
                     }

@@ -132,6 +132,7 @@
                 data: data,
                 method: 'POST',
                 success: function (res) {
+                    console.log(res)
                     alert('Данные успешно сохранены!')
                 },
                 async:true

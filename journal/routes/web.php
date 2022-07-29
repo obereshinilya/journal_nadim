@@ -87,11 +87,18 @@ use Illuminate\Support\Facades\Auth;
     Route::get('/open_val_month', [Controllers\BalansController::class, 'open_val_month'])->name('open_val_month');   //открытие формы
     Route::get('/open_val_day', [Controllers\BalansController::class, 'open_val_day'])->name('open_val_day');   //открытие формы
 
-
         //Балансовый
     Route::get('/open_balans', [Controllers\BalansController::class, 'open_balans'])->name('open_balans');
     Route::get('/get_balans/{date}', [Controllers\BalansController::class, 'get_balans'])->name('get_balans');
     Route::get('/print_balans/{date}', [Controllers\BalansController::class, 'print_balans'])->name('print_balans');
+
+/////Суточный журнал смены
+    Route::get('/open_journal_smeny', [Controllers\SutJournalController::class, 'open_journal_smeny'])->name('open_journal_smeny');
+    Route::post('/save_journal_smeny/{date}', [Controllers\SutJournalController::class, 'save_journal_smeny'])->name('save_journal_smeny');   //сохранение строки
+    Route::get('/get_row/{date}/{id_mother}', [Controllers\SutJournalController::class, 'get_row'])->name('get_row');   //получить строку по id
+    Route::post('/save_other_row/{date}', [Controllers\SutJournalController::class, 'save_other_row'])->name('save_other_row');   //сохранение остальных строк
+    Route::get('/get_row_other/{date}', [Controllers\SutJournalController::class, 'get_row_other'])->name('get_row_other');   //получить строку по id
+    Route::get('/print_journal_smeny/{date}', [Controllers\SutJournalController::class, 'print_journal_smeny'])->name('print_journal_smeny');
 
 
 

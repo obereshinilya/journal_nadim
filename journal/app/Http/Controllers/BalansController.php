@@ -16,7 +16,9 @@ use Faker\Core\Number;
 use http\Exception\BadUrlException;
 use Illuminate\Http\Request;
 use DOMDocument;
+use phpDocumentor\Reflection\Types\False_;
 use phpDocumentor\Reflection\Types\True_;
+use function PHPUnit\Framework\isEmpty;
 
 class BalansController extends Controller
 {
@@ -48,25 +50,35 @@ class BalansController extends Controller
 //        date_default_timezone_set('Europe/Moscow');
         $data = $request->all();
         for ($i = 11; $i<17; $i++){
-            if (Rezhim_gpa::orderbyDesc('id')->where('number_gpa', '=', $i)->first()->rezhim != $data['gpa'.$i]){
+            try {
+                $rezhim = Rezhim_gpa::orderbyDesc('id')->where('number_gpa', '=', $i)->first()->rezhim;
+            } catch (\Throwable $exception){
+                $rezhim = '';
+            }
+            if ($rezhim != $data['gpa'.$i]){
                 $new_log  = (new MainTableController)->create_log_record('Изменил режим работы ГПА'.$i);
                 Rezhim_gpa::create(['number_gpa'=>$i, 'rezhim'=>$data['gpa'.$i], 'timestamp'=>date('Y-m-d H:i:s')]);
             }
         }
         for ($i = 21; $i<27; $i++){
-            if (Rezhim_gpa::orderbyDesc('id')->where('number_gpa', '=', $i)->first()->rezhim != $data['gpa'.$i]){
+            try {
+                $rezhim = Rezhim_gpa::orderbyDesc('id')->where('number_gpa', '=', $i)->first()->rezhim;
+            } catch (\Throwable $exception){
+                $rezhim = '';
+            }
+            if ($rezhim != $data['gpa'.$i]){
                 $new_log  = (new MainTableController)->create_log_record('Изменил режим работы ГПА'.$i);
                 Rezhim_gpa::create(['number_gpa'=>$i, 'rezhim'=>$data['gpa'.$i], 'timestamp'=>date('Y-m-d H:i:s')]);
             }
         }
     }
-
 
     public function get_gpa_rezhim_report($dks)
     {
         $new_log  = (new MainTableController)->create_log_record('Посмотрел отчет по режимам работы ГПА ДКС'.$dks);
         return view('web.reports.open_gpa_rezhim_report', compact('dks'));
     }
+
     public function get_gpa_rezhim_report_data($date, $dks)
     {
         $present_day = date('Y-m-d', strtotime($date.' +1 day'));
@@ -101,9 +113,15 @@ class BalansController extends Controller
     }
 
     public function open_svodniy(){
-        $new_log  = (new MainTableController)->create_log_record('Посмотрел сводный отчет');
-        return view('web.reports.open_svodniy');
+        $config = SvodniyReport::orderbyDesc('id')->where('config', '=', true)->first();
+        if(!$config || !$config->p_yams || !$config->q_yams || !$config->q_yub || !$config->p_yub ){
+            return redirect('/svodniy_setting');
+        } else{
+            $new_log  = (new MainTableController)->create_log_record('Посмотрел сводный отчет');
+            return view('web.reports.open_svodniy');
+        }
     }
+
     public function get_svodniy($date){
         for ($i=0; $i<24; $i++){
             $time_buff = $i+1;
@@ -156,32 +174,44 @@ class BalansController extends Controller
         $new_log  = (new MainTableController)->create_log_record('Распечатал сводный отчет за ' . $date);
         return view('web.pdf_form.pdf_svodniy', compact( 'date'));
     }
+
     public function svodniy_setting(){
         $new_log  = (new MainTableController)->create_log_record('Открыл настройки сводного отчета');
-        return view('web.reports.setting_svodniy');
+        $config = SvodniyReport::orderbyDesc('id')->where('config', '=', true)->first();
+        if(!$config || !$config->p_yams || !$config->q_yams || !$config->q_yub || !$config->p_yub ){
+            $data = 'false';
+            return view('web.reports.setting_svodniy', compact('data'));
+        } else{
+            $data = 'true';
+            return view('web.reports.setting_svodniy', compact('data'));
+        }
     }
+
     public function save_param_svodniy($params, $hfrpok){
         $new_log  = (new MainTableController)->create_log_record('Изменил настройки сводного отчета');
         try {
             $config = SvodniyReport::orderbyDesc('id')->where('config', '=', true)->first()->update([$params=>$hfrpok]);
             return true;
         } catch (\Throwable $e){
-            return $e;
+            $config = SvodniyReport::create(['config'=>true, $params=>$hfrpok]);
+            return true;
         }
     }
+
     public function get_setting_svodniy(){
-        try {
-            $config = SvodniyReport::orderbyDesc('id')->where('config', '=', true)->first();
-            return $config;
-        } catch (\Throwable $e){
-            return $e;
-        }
+        $config = SvodniyReport::orderbyDesc('id')->where('config', '=', true)->first();
+        return $config;
     }
 
 /////По валовому
     public function open_val(){    //открытие формы
-        $new_log  = (new MainTableController)->create_log_record('Посмотрел годовой балансовый отчет');
-        return view('web.reports.open_val_year');
+        $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->get();
+        if(count($config) < 2){
+            return redirect('/valoviy_setting');
+        } else{
+            $new_log  = (new MainTableController)->create_log_record('Посмотрел годовой балансовый отчет');
+            return view('web.reports.open_val_year');
+        }
     }
     public function save_plan_month($date, $value, $mestorozhdeniye){   //сохранение годового
         if ($mestorozhdeniye == 'yams'){
@@ -340,16 +370,33 @@ class BalansController extends Controller
     }
 
     public function valoviy_setting(){
-        $new_log  = (new MainTableController)->create_log_record('Открыл настройки балансового отчета');
-        return view('web.reports.setting_valoviy');
+        $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->get();
+        if(count($config) < 2){
+            $data = 'false';
+            $new_log  = (new MainTableController)->create_log_record('Открыл настройки балансового отчета');
+            return view('web.reports.setting_valoviy', compact('data'));
+        } else{
+            $data = 'true';
+            $new_log  = (new MainTableController)->create_log_record('Открыл настройки балансового отчета');
+            return view('web.reports.setting_valoviy', compact('data'));
+        }
+
     }
 
     public function get_setting_valoviy(){
         try {
-            $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', 'yams')->first();
-            $data_to_table['fact_yams'] = $config->val;
-            $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', 'yub')->first();
-            $data_to_table['fact_yub'] = $config->val;
+            try {
+                $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', 'yams')->first();
+                $data_to_table['fact_yams'] = $config->val;
+            } catch (\Throwable $exception){
+
+            }
+            try {
+                $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', 'yub')->first();
+                $data_to_table['fact_yub'] = $config->val;
+            } catch (\Throwable $exception){
+
+            }
             return $data_to_table;
         } catch (\Throwable $e){
             return $e;
@@ -357,7 +404,12 @@ class BalansController extends Controller
     }
     public function save_param_valoviy($params, $hfrpok){
         $new_log  = (new MainTableController)->create_log_record('Изменил настройки балансового отчета');
-        $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', $params)->first()->update(['val'=>$hfrpok]);
+        try {
+            $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->where('yams_yub', '=', $params)->first()->update(['val'=>$hfrpok]);
+
+        }catch (\Throwable $e){
+            $config = YearBalans::create(['yams_yub'=>$params, 'val'=>$hfrpok, 'config'=>true]);
+        }
     }
 
     public function print_val($date, $type){
@@ -373,12 +425,22 @@ class BalansController extends Controller
         }
     }
     public function open_val_month(){    //открытие формы
-        $new_log  = (new MainTableController)->create_log_record('Посмотрел месячный балансовый отчет');
-        return view('web.reports.open_val_month');
+        $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->get();
+        if(count($config) < 2){
+            return redirect('/valoviy_setting');
+        } else{
+            $new_log  = (new MainTableController)->create_log_record('Посмотрел месячный балансовый отчет');
+            return view('web.reports.open_val_month');
+        }
     }
     public function open_val_day(){    //открытие формы
-        $new_log  = (new MainTableController)->create_log_record('Посмотрел суточный балансовый отчет');
-        return view('web.reports.open_val_day');
+        $config = YearBalans::orderbyDesc('id')->where('config', '=', true)->get();
+        if(count($config) < 2){
+            return redirect('/valoviy_setting');
+        } else{
+            $new_log  = (new MainTableController)->create_log_record('Посмотрел суточный балансовый отчет');
+            return view('web.reports.open_val_day');
+        }
     }
 
 
@@ -393,7 +455,6 @@ class BalansController extends Controller
 
 
     public function open_balans(){
-
         return view('web.reports.open_balans');
     }
 

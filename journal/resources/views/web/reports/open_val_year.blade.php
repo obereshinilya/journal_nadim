@@ -23,17 +23,18 @@
     @endpush
         <div style="display: inline-flex; width: 100%">
             <h3 >Валовая добыча газа Надымского НГДУ (за год)</h3>
-                <button  id="print" class="button button1" style="margin-left: 60%; margin-top: 1%">Печать</button>
+            @include('include.choice_year_for_val')
+
+            <button  id="print" class="button button1" style="margin-left: 40%; margin-top: 1%">Печать</button>
                 <button  id="setting" class="button button1" style=" margin-top: 1%">Настройка</button>
         </div>
-    @include('include.choice_year')
     <style>
         .choice-period-btn {
             display: none;
         }
     </style>
 
-    <div id="content-header" style="display: inline-flex; width: 100%">
+    <div id="content-header" style="display: inline-flex; width: 100%; margin-top: 2%;">
         <h4 style="width: 30%">Показатели Ямсовейского ГКМ</h4>
         <input  id="plan_yams" type="number" style="border-radius: 6px; height:  3%; margin-top: 0.6%;" placeholder="Годовой план">
         <button  id="submit" class="button button1" onclick="saveMonth('plan_yams')" style="margin-left: 2%">Сохранить годовой план</button>

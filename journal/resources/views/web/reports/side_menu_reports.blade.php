@@ -88,7 +88,14 @@
                                     <ul>
                                         <li><a id="5" class="tableItem">Журнал смены</a></li>
                                     </ul>
-
+                                    <ul>
+                                        <li><a id="6" class="tableItem">Отчет ТЭР</a>
+                                            <ul>
+                                                <li><a id="61" class="tableItem">Ямсовейского ГКМ</a></li>
+                                                <li><a id="62" class="tableItem">Юбилейного ГКМ</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
                                 </div>`
             //         <ul>
             //         <li><a id="5" class="tableItem">Балансовый отчет</a>
@@ -151,6 +158,10 @@
                 document.location.href = '/open_val_day'
             }else if(vibrano === '5'){
                 document.location.href = '/open_journal_smeny'
+            }else if(vibrano === '61'){
+                document.location.href = '/open_ter/yams'
+            }else if(vibrano === '62'){
+                document.location.href = '/open_ter/yub'
             }
         }
 

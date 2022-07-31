@@ -15,7 +15,8 @@ class TerController extends Controller
         } else{
             $norm_name = 'Юбилейного ГКМ';
         }
-//        $new_log  = (new MainTableController)->create_log_record('Открыл журнал смены');
+        $new_log  = (new MainTableController)->create_log_record('Открыл отчет по ТЭР '.$norm_name);
+
         return view('web.reports.open_ter', compact('yams_yub', 'norm_name'));
     }
 
@@ -88,6 +89,12 @@ class TerController extends Controller
     }
 
     public function save_ter(Request $request, $yams_yub){
+        if ($yams_yub == 'yams'){
+            $norm_name = 'Ямсковейского ГКМ';
+        } else{
+            $norm_name = 'Юбилейного ГКМ';
+        }
+        $new_log  = (new MainTableController)->create_log_record('Добавил запись по ТЭР '.$norm_name);
         $data = $request->all();
         try {
             foreach ($data as $key => $item) {
@@ -117,12 +124,9 @@ class TerController extends Controller
         } else{
             $norm_name = 'Юбилейного ГКМ';
         }
-//        $new_log  = (new MainTableController)->create_log_record('Открыл журнал смены');
+        $new_log  = (new MainTableController)->create_log_record('Распечатал отчет по ТЭР '.$norm_name.' за '.$date);
         return view('web.pdf_form.pdf_ter', compact('date', 'type', 'yams_yub', 'norm_name'));
     }
-
-
-
 
 }
 

@@ -48,22 +48,31 @@
             <tr>
                 <th rowspan="7">ННГДУ</th>
                 <th rowspan="3">ЮНГКМ сеноман</th>
-                <td id="yub_ukpg" onmouseover="this.textContent = 'Добавить запись'; this.style.background = 'green'" onmouseout="this.textContent = 'УКПГ'; this.style.background = ''" onclick="add_new_record(this.id)">УКПГ</td>
-                <td id="yub_ukpg_save" onmouseover="this.style.background = 'green'" onmouseout="this.style.background = '#3CB371'" style="display: none; background: #3CB371" onclick="save_new_record(this.id)">Сохранить</td>
+                <td id="yub_ukpg" >УКПГ
+                    <img id="yub_ukpg_minus" src="assets/images/icons/ober_minus.png" style="width: 15%; float: right; margin-right: 5%" onclick="remove_last_row(this.id)"/>
+                    <img id="yub_ukpg_plus" src="assets/images/icons/ober_plus.png" style="width: 15%; float: right; margin-right: 5%" onclick="add_new_record(this.id)"/>
+                    <img id="yub_ukpg_send" src="assets/images/icons/ober_send.png" style="width: 15%; float: right; margin-right: 5%; display: none" onclick="save_new_record(this.id)"/>
+                </td>
                 <td id="yub_ukpg_obor"></td>
                 <td  id="yub_ukpg_status"></td>
                 <td  id="yub_ukpg_date"></td>
             </tr>
             <tr>
-                <td id="yub_dks1" onmouseover="this.textContent = 'Добавить запись'; this.style.background = 'green'" onmouseout="this.textContent = 'ДКС-1'; this.style.background = ''" onclick="add_new_record(this.id)">ДКС-1</td>
-                <td id="yub_dks1_save" onmouseover="this.style.background = 'green'" onmouseout="this.style.background = '#3CB371'" style="display: none; background: #3CB371" onclick="save_new_record(this.id)">Сохранить</td>
+                <td id="yub_dks1" >ДКС-1
+                    <img id="yub_dks1_minus" src="assets/images/icons/ober_minus.png" style="width: 15%; float: right; margin-right: 5%" onclick="remove_last_row(this.id)"/>
+                    <img id="yub_dks1_plus" src="assets/images/icons/ober_plus.png" style="width: 15%; float: right; margin-right: 5%" onclick="add_new_record(this.id)"/>
+                    <img id="yub_dks1_send" src="assets/images/icons/ober_send.png" style="width: 15%; float: right; margin-right: 5%; display: none" onclick="save_new_record(this.id)"/>
+                </td>
                 <td id="yub_dks1_obor"></td>
                 <td  id="yub_dks1_status"></td>
                 <td  id="yub_dks1_date"></td>
             </tr>
             <tr>
-                <td id="yub_dks2" onmouseover="this.textContent = 'Добавить запись'; this.style.background = 'green'" onmouseout="this.textContent = 'ДКС-2'; this.style.background = ''" onclick="add_new_record(this.id)">ДКС-2</td>
-                <td id="yub_dks2_save" onmouseover="this.style.background = 'green'" onmouseout="this.style.background = '#3CB371'" style="display: none; background: #3CB371" onclick="save_new_record(this.id)">Сохранить</td>
+                <td id="yub_dks2" >ДКС-2
+                    <img id="yub_dks2_minus" src="assets/images/icons/ober_minus.png" style="width: 15%; float: right; margin-right: 5%" onclick="remove_last_row(this.id)"/>
+                    <img id="yub_dks2_plus" src="assets/images/icons/ober_plus.png" style="width: 15%; float: right; margin-right: 5%" onclick="add_new_record(this.id)"/>
+                    <img id="yub_dks2_send" src="assets/images/icons/ober_send.png" style="width: 15%; float: right; margin-right: 5%; display: none" onclick="save_new_record(this.id)"/>
+                </td>
                 <td id="yub_dks2_obor"></td>
                 <td  id="yub_dks2_status"></td>
                 <td  id="yub_dks2_date"></td>
@@ -76,22 +85,31 @@
             </tr>
             <tr>
                 <th rowspan="3">ЯНГКМ</th>
-                <td id="yams_ukpg" onmouseover="this.textContent = 'Добавить запись'; this.style.background = 'green'" onmouseout="this.textContent = 'УКПГ'; this.style.background = ''" onclick="add_new_record(this.id)">УКПГ</td>
-                <td id="yams_ukpg_save" onmouseover="this.style.background = 'green'" onmouseout="this.style.background = '#3CB371'" style="display: none; background: #3CB371" onclick="save_new_record(this.id)">Сохранить</td>
+                <td id="yams_ukpg" >УКПГ
+                    <img id="yams_ukpg_minus" src="assets/images/icons/ober_minus.png" style="width: 15%; float: right; margin-right: 5%" onclick="remove_last_row(this.id)"/>
+                    <img id="yams_ukpg_plus" src="assets/images/icons/ober_plus.png" style="width: 15%; float: right; margin-right: 5%" onclick="add_new_record(this.id)"/>
+                    <img id="yams_ukpg_send" src="assets/images/icons/ober_send.png" style="width: 15%; float: right; margin-right: 5%; display: none" onclick="save_new_record(this.id)"/>
+                </td>
                 <td id="yams_ukpg_obor"></td>
                 <td  id="yams_ukpg_status"></td>
                 <td  id="yams_ukpg_date"></td>
             </tr>
             <tr>
-                <td id="yams_dks1" onmouseover="this.textContent = 'Добавить запись'; this.style.background = 'green'" onmouseout="this.textContent = 'ДКС-1'; this.style.background = ''" onclick="add_new_record(this.id)">ДКС-1</td>
-                <td id="yams_dks1_save" onmouseover="this.style.background = 'green'" onmouseout="this.style.background = '#3CB371'" style="display: none; background: #3CB371" onclick="save_new_record(this.id)">Сохранить</td>
+                <td id="yams_dks1" >ДКС-1
+                    <img id="yams_dks1_minus" src="assets/images/icons/ober_minus.png" style="width: 15%; float: right; margin-right: 5%" onclick="remove_last_row(this.id)"/>
+                    <img id="yams_dks1_plus" src="assets/images/icons/ober_plus.png" style="width: 15%; float: right; margin-right: 5%" onclick="add_new_record(this.id)"/>
+                    <img id="yams_dks1_send" src="assets/images/icons/ober_send.png" style="width: 15%; float: right; margin-right: 5%; display: none" onclick="save_new_record(this.id)"/>
+                </td>
                 <td id="yams_dks1_obor"></td>
                 <td  id="yams_dks1_status"></td>
                 <td  id="yams_dks1_date"></td>
             </tr>
             <tr>
-                <td id="yams_dks2" onmouseover="this.textContent = 'Добавить запись'; this.style.background = 'green'" onmouseout="this.textContent = 'ДКС-2'; this.style.background = ''" onclick="add_new_record(this.id)">ДКС-2</td>
-                <td id="yams_dks2_save" onmouseover="this.style.background = 'green'" onmouseout="this.style.background = '#3CB371'" style="display: none; background: #3CB371" onclick="save_new_record(this.id)">Сохранить</td>
+                <td id="yams_dks2" >ДКС-2
+                    <img id="yams_dks2_minus" src="assets/images/icons/ober_minus.png" style="width: 15%; float: right; margin-right: 5%" onclick="remove_last_row(this.id)"/>
+                    <img id="yams_dks2_plus" src="assets/images/icons/ober_plus.png" style="width: 15%; float: right; margin-right: 5%" onclick="add_new_record(this.id)"/>
+                    <img id="yams_dks2_send" src="assets/images/icons/ober_send.png" style="width: 15%; float: right; margin-right: 5%; display: none" onclick="save_new_record(this.id)"/>
+                </td>
                 <td id="yams_dks2_obor"></td>
                 <td  id="yams_dks2_status"></td>
                 <td  id="yams_dks2_date"></td>
@@ -160,7 +178,6 @@
                 var ids_special_row = ['yub_ukpg', 'yub_dks1', 'yub_dks2', 'yams_ukpg', 'yams_dks1', 'yams_dks2']
                 for (var id_special_row of ids_special_row){
                     document.getElementById(id_special_row).style.display = ''
-                    document.getElementById(id_special_row+'_save').style.display = 'none'
                     document.getElementById(id_special_row+'_obor').contentEditable = false
                     document.getElementById(id_special_row+'_status').contentEditable = false
                     document.getElementById(id_special_row+'_date').contentEditable = false
@@ -179,18 +196,50 @@
             });
 
         })
+        function remove_last_row(id){
+            var id_mother = id.split('_')[0]+'_'+id.split('_')[1]
+            if (document.getElementById(id_mother+'_plus').style.display === 'none'){
+                document.getElementById(id_mother+'_plus').style.display = ''
+                document.getElementById(id_mother+'_send').style.display = 'none'
+                document.getElementById(id_mother+'_obor').contentEditable = false
+                document.getElementById(id_mother+'_status').contentEditable = false
+                document.getElementById(id_mother+'_date').contentEditable = false
+                document.getElementById(id_mother+'_obor').style.background = ''
+                document.getElementById(id_mother+'_status').style.background = ''
+                document.getElementById(id_mother+'_date').style.background = ''
+                document.getElementById(id_mother+'_obor').textContent = ''
+                document.getElementById(id_mother+'_status').textContent = ''
+                document.getElementById(id_mother+'_date').textContent = ''
+                try {
+                    get_row(id_mother)
+                }catch (e){
+
+                }
+            } else {
+                $.ajax({
+                    url: '/remove_last_row/'+document.getElementById(id_mother).getAttribute('last_id'),
+                    method: 'GET',
+                    success: function (res) {
+                        get_row(id_mother)
+                        alert('Последняя запись удалена!')
+                    },
+                    async:false
+                })
+            }
+        }
         function add_new_record(id){
             document.getElementById(id).style.display = 'none'
-            document.getElementById(id+'_save').style.display = ''
-            document.getElementById(id+'_obor').contentEditable = true
-            document.getElementById(id+'_status').contentEditable = true
-            document.getElementById(id+'_date').contentEditable = true
-            document.getElementById(id+'_obor').style.background = 'white'
-            document.getElementById(id+'_status').style.background = 'white'
-            document.getElementById(id+'_date').style.background = 'white'
-            document.getElementById(id+'_obor').textContent = ''
-            document.getElementById(id+'_status').textContent = ''
-            document.getElementById(id+'_date').textContent = ''
+            var mother_id = id.split('_')[0]+'_'+id.split('_')[1]
+            document.getElementById(mother_id+'_send').style.display = ''
+            document.getElementById(mother_id+'_obor').contentEditable = true
+            document.getElementById(mother_id+'_status').contentEditable = true
+            document.getElementById(mother_id+'_date').contentEditable = true
+            document.getElementById(mother_id+'_obor').style.background = 'white'
+            document.getElementById(mother_id+'_status').style.background = 'white'
+            document.getElementById(mother_id+'_date').style.background = 'white'
+            document.getElementById(mother_id+'_obor').textContent = ''
+            document.getElementById(mother_id+'_status').textContent = ''
+            document.getElementById(mother_id+'_date').textContent = ''
         }
 
         function save_new_record(id){
@@ -209,8 +258,9 @@
                 },
                 async:false
             })
-            document.getElementById(id_mother).style.display = ''
             document.getElementById(id).style.display = 'none'
+            document.getElementById(id_mother+'_plus').style.display = ''
+            console.log(id_mother+'_plus')
             document.getElementById(id_mother+'_obor').contentEditable = false
             document.getElementById(id_mother+'_status').contentEditable = false
             document.getElementById(id_mother+'_date').contentEditable = false
@@ -245,11 +295,17 @@
                 url: '/get_row/'+$('#table_date_start').val()+'/'+id,
                 method: 'GET',
                 success: function (res) {
-                        document.getElementById(id+'_obor').innerHTML = res[id+'_obor']
-                        document.getElementById(id+'_status').innerHTML = res[id+'_status']
-                        document.getElementById(id+'_date').innerHTML = res[id+'_date']
+                    document.getElementById(id).setAttribute('last_id', res['last_id'])
+                    document.getElementById(id+'_plus').style.display = ''
+                    document.getElementById(id+'_send').style.display = 'none'
+                    document.getElementById(id+'_obor').innerHTML = res[id+'_obor']
+                    document.getElementById(id+'_status').innerHTML = res[id+'_status']
+                    document.getElementById(id+'_date').innerHTML = res[id+'_date']
                 },
                 error: function(){
+                    document.getElementById(id+'_plus').style.display = ''
+                    document.getElementById(id+'_send').style.display = 'none'
+                    document.getElementById(id).setAttribute('last_id', '')
                     document.getElementById(id+'_obor').innerHTML = ''
                     document.getElementById(id+'_status').innerHTML = ''
                     document.getElementById(id+'_date').innerHTML = ''
@@ -272,6 +328,9 @@
 
     </script>
     <style>
+        img:hover{
+            transform: scale(1.3);
+        }
         span{
             outline: none !important;
         }

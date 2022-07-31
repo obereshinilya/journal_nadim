@@ -99,6 +99,8 @@ use Illuminate\Support\Facades\Auth;
     Route::post('/save_other_row/{date}', [Controllers\SutJournalController::class, 'save_other_row'])->name('save_other_row');   //сохранение остальных строк
     Route::get('/get_row_other/{date}', [Controllers\SutJournalController::class, 'get_row_other'])->name('get_row_other');   //получить строку по id
     Route::get('/print_journal_smeny/{date}', [Controllers\SutJournalController::class, 'print_journal_smeny'])->name('print_journal_smeny');
+    Route::get('/remove_last_row/{id_last_row}', [Controllers\SutJournalController::class, 'remove_last_row'])->name('remove_last_row');
+
 ////ТЭР
     Route::get('/open_ter/{yams_yub}', [Controllers\TerController::class, 'open_ter'])->name('open_ter');
     Route::get('/get_ter/{date}/{type}/{yams_yub}', [Controllers\TerController::class, 'get_ter'])->name('get_ter');

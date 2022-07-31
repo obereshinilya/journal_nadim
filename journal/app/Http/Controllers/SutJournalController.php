@@ -38,6 +38,7 @@ class SutJournalController extends Controller
                 $data[$key]=$data[$key].$data_to_table[$key][$i];
             }
         }
+        $data['last_id'] = JournalSmeny::orderbydesc('id')->where('date', '=', $date)->where('id_record', 'like', $id_mother.'%')->first()->id;
         return $data;
     }
 
@@ -71,6 +72,16 @@ class SutJournalController extends Controller
     public function print_journal_smeny($date){   //печать
         $new_log  = (new MainTableController)->create_log_record('Распечатал журнал смены за '.$date);
         return view('web.pdf_form.pdf_journal_smeny', compact('date'));
+    }
+    public function remove_last_row($id_last_row){
+        $new_log  = (new MainTableController)->create_log_record('Скорректировал журнал смены за '.$date);
+        try {
+            JournalSmeny::find($id_last_row)->delete();
+            JournalSmeny::find($id_last_row-1)->delete();
+            JournalSmeny::find($id_last_row-2)->delete();
+        } catch (\Throwable $e){
+            return $e;
+        }
     }
 
 

@@ -27,10 +27,10 @@
 
         <div id="content-header" style="display: none"></div>
         <div style="display:inline-block">
-            <button class="button button1" id="q_yams">P Ямсовейского ГКМ</button>
-            <button class="button button1" id="p_yams">Q Ямсовейского ГКМ</button>
-            <button class="button button1" id="p_yub">P Юбилейного ГКМ</button>
+            <button class="button button1" id="q_yams">Q Ямсовейского ГКМ</button>
+            <button class="button button1" id="p_yams">p Ямсовейского ГКМ</button>
             <button class="button button1" id="q_yub">Q Юбилейного ГКМ</button>
+            <button class="button button1" id="p_yub">P Юбилейного ГКМ</button>
             <button class="button button1" id="redirect" style="background-color: #d8d8d8">Вернуться к отчету</button>
 
         </div>

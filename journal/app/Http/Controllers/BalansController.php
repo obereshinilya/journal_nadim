@@ -129,11 +129,11 @@ class BalansController extends Controller
                 ->wherebetween('timestamp', [date('Y-m-d '.$i.':00:00', strtotime($date)), date('Y-m-d '.$time_buff.':00:00', strtotime($date))])
                 ->first();
             try {
-                $data_to_report[$i]['q_yams'] = $data[$i]->p_yams;
-                $data_to_report[$i]['p_yams'] = $data[$i]->q_yams;
-                $data_to_report[$i]['q_yub'] = $data[$i]->p_yub;
-                $data_to_report[$i]['p_yub'] = $data[$i]->q_yub;
-                $data_to_report[$i]['q'] = $data[$i]->p_yams + $data[$i]->q_yub;
+                $data_to_report[$i]['q_yams'] = $data[$i]->q_yams;
+                $data_to_report[$i]['p_yams'] = $data[$i]->p_yams;
+                $data_to_report[$i]['q_yub'] = $data[$i]->q_yub;
+                $data_to_report[$i]['p_yub'] = $data[$i]->p_yub;
+                $data_to_report[$i]['q'] = $data[$i]->q_yams + $data[$i]->q_yub;
             } catch (\Throwable $e){
                 $data_to_report[$i]['q_yams'] = '...';
                 $data_to_report[$i]['p_yams'] = '...';

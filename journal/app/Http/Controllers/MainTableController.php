@@ -119,9 +119,14 @@ class MainTableController extends Controller
             $record['username'] = 'Неизвестно';
             $record['domain_name'] = 'Неизвестно';
         }
-        if (Log::orderbydesc('id')->first()->event != $record['event']){
+        try {
+            if (Log::orderbydesc('id')->first()->event != $record['event']){
+                Log::create($record);
+            }
+        }catch (\Throwable $e){
             Log::create($record);
         }
+
     }
 
 

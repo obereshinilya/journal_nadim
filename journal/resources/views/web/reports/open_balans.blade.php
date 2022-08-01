@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="{{asset('assets/libs/tooltip/tooltip.css')}}">
     @endpush
         <div style="display: inline-flex; width: 100%">
-            <h3 >Балансовый отчет Надымского НГДУ</h3>
+            <h3 >Данные от смежных систем</h3>
             <div style="position: absolute; right: 11%">
                 <button  id="print" class="button button1">Печать</button>
             </div>

@@ -96,6 +96,9 @@
                                             </ul>
                                         </li>
                                     </ul>
+                                    <ul>
+                                        <li><a id="7" class="tableItem">Данные от смежных систем</a></li>
+                                    </ul>
                                 </div>`
             //         <ul>
             //         <li><a id="5" class="tableItem">Балансовый отчет</a>
@@ -162,6 +165,8 @@
                 document.location.href = '/open_ter/yams'
             }else if(vibrano === '62'){
                 document.location.href = '/open_ter/yub'
+            }else if(vibrano === '7'){
+                document.location.href = '/open_balans'
             }
         }
 

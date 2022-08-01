@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ConfigXML;
 use App\Models\Hour_params;
 use App\Models\Min_params;
+use App\Models\NewGUID;
 use App\Models\Rezhim_gpa;
 use App\Models\Rezhim_gpa_report;
 use App\Models\Sut_params;
@@ -120,28 +121,32 @@ class TestController extends Controller
 
 
 
-//    public function test($params_type)
-//    {
-//
-//        $test_table_data = TableObj::select('hfrpok', 'guid_masdu_5min', 'guid_masdu_hours', 'guid_masdu_day', 'id')->get();
-//        for ($i = 29; $i < 30; $i++) {
-//            for ($k = 0; $k < 12; $k++) {
-//                for ($j = 0; $j < 12; $j++) {
-//                    $min = $j * 5;
-//                    foreach ($test_table_data as $row) {
-//                        $data_in_table['val'] = rand(1, 1000) / 100;
-//                        $data_in_table['hfrpok_id'] = $row['id'];
-//                        $data_in_table['timestamp'] = date('Y-m-' . $i . ' ' . $k . ':' . $min . ':10');
-////                        Hour_params::create($data_in_table);
-////                    Sut_params::create($data_in_table);
-//                        Min_params::create($data_in_table);
-//
-//                    }
-//                }
-//            }
-//
-//        }
-//    }
+    public function update_guid()
+    {
+        $new_guid = NewGUID::where('check', 'false')->get();
+        if ($new_guid){
+            foreach ($new_guid as $row){
+                $old_guid = $row->old_guid;
+                $row_with_old_guid = TableObj::where('guid_masdu_5min', '=', $old_guid)->first();
+                if ($row_with_old_guid){
+                    $row_with_old_guid->update(['guid_masdu_5min'=>$row->new_guid]);
+                    $row->update(['check'=>true]);
+                }else{
+                    $row_with_old_guid = TableObj::where('guid_masdu_hours', '=', $old_guid)->first();
+                    if ($row_with_old_guid){
+                    $row_with_old_guid->update(['guid_masdu_hours'=>$row->new_guid]);
+                    $row->update(['check'=>true]);
+                    }else{
+                        $row_with_old_guid = TableObj::where('guid_masdu_day', '=', $old_guid)->first();
+                        if ($row_with_old_guid){
+                        $row_with_old_guid->update(['guid_masdu_day'=>$row->new_guid]);
+                        $row->update(['check'=>true]);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
 

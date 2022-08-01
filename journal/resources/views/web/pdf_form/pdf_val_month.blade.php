@@ -26,7 +26,7 @@
 <p id="date" style="display: none">{{$date}}</p>
 
     <div style="display: inline-flex; width: 100%; margin-left: 25%">
-            <h1 >Валовая добыча газа Надымского НГДУ за {{$date}}</h1>
+            <h1 >Балансовый отчет Надымского НГДУ за {{$date}}</h1>
 
     </div>
     <style>

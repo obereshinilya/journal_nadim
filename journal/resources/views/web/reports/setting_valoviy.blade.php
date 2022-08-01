@@ -96,21 +96,22 @@
             })
 
             $('.button').click(function () {
-                if (!check_param){
+                if (check_param === ''){
                     if (this.id !== 'redirect')
                         alert('Не выбран параметр!')
-                }
-                if (this.getAttribute('select-hfrpok')){
-                    var type = check_param.split('_')[1]
-                    $.ajax({
-                        url: '/save_param_valoviy/'+ type + '/'+ this.getAttribute('select-hfrpok'),
-                        method: 'GET',
-                        success: function (res) {
-                            mark_checked_params(check_param)
-                            alert('Параметр обновлен!')
-                        },
-                        async:false
-                    })
+                }else {
+                    if (this.getAttribute('select-hfrpok')) {
+                        var type = check_param.split('_')[1]
+                        $.ajax({
+                            url: '/save_param_valoviy/' + type + '/' + this.getAttribute('select-hfrpok'),
+                            method: 'GET',
+                            success: function (res) {
+                                mark_checked_params(check_param)
+                                alert('Параметр обновлен!')
+                            },
+                            async: false
+                        })
+                    }
                 }
             })
         })

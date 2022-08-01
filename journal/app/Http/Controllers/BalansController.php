@@ -167,6 +167,7 @@ class BalansController extends Controller
         } catch (\Throwable $e){
             $to_table['p_yub'] = 0;
         }
+        $to_table['timestamp'] = date('Y-m-d H:i:s');
         SvodniyReport::create($to_table);
     }
 
@@ -455,99 +456,80 @@ class BalansController extends Controller
 
 
     public function open_balans(){
+        $new_log  = (new MainTableController)->create_log_record('Посмотрел данные от смежных систем');
+
         return view('web.reports.open_balans');
     }
 
     public function get_balans($date){
             $sum = 0;
-            $gz_u = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-                ->where('params_resource', '=', 'd91cb427-770e-4fe9-82bb-3c853a3532de')->orderbydesc('id')->first();
+            $gz_u = BalansReport::wherebetween('date',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
+                ->where('guid', '=', 'd91cb427-770e-4fe9-82bb-3c853a3532de')->orderbydesc('date')->first();
             try {
                 $gz_u = $gz_u->toArray();
-                $to_balans['poteri'] = $gz_u['ymsovey'];
-                $sum = $sum + $gz_u['ymsovey'];
+                $to_balans['poteri'] = $gz_u['value'];
+                $sum = $sum + $gz_u['value'];
 
             } catch (\Throwable $e){
                 $to_balans['poteri'] = '...';
             }
-            $gz_uh = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-                ->where('params_resource', '=', 'dd812389-45fe-4dc4-ac99-3d6cfd64730b')->orderbydesc('id')->first();
+            $gz_uh = BalansReport::wherebetween('date',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
+                ->where('guid', '=', 'dd812389-45fe-4dc4-ac99-3d6cfd64730b')->orderbydesc('date')->first();
             try {
                 $gz_uh = $gz_uh->toArray();
-                $to_balans['rash_val'] = $gz_uh['ymsovey'];
-                $sum = $sum + $gz_uh['ymsovey'];
-
-
+                $to_balans['rash_val'] = $gz_uh['value'];
+                $sum = $sum + $gz_uh['value'];
             } catch (\Throwable $e){
                 $to_balans['rash_val'] = '...';
             }
-            $st_org = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-                ->where('params_resource', '=', '142a3b0b-0b34-4cef-9a8b-728d6629e9e1')->orderbydesc('id')->first();
+            $st_org = BalansReport::wherebetween('date',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
+                ->where('guid', '=', '142a3b0b-0b34-4cef-9a8b-728d6629e9e1')->orderbydesc('date')->first();
             try {
                 $st_org = $st_org->toArray();
-                $to_balans['rash_gaz'] = $st_org['ymsovey'];
-                $sum = $sum + $st_org['ymsovey'];
+                $to_balans['rash_gaz'] = $st_org['value'];
+                $sum = $sum + $st_org['value'];
 
             } catch (\Throwable $e){
                 $to_balans['rash_gaz'] = '...';
             }
-            $tov_g = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-                ->where('params_resource', '=', 'fbb860e6-225d-4dd3-ac4e-02b83fb0167e')->orderbydesc('id')->first();
+            $tov_g = BalansReport::wherebetween('date',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
+                ->where('guid', '=', 'fbb860e6-225d-4dd3-ac4e-02b83fb0167e')->orderbydesc('date')->first();
             try {
                 $tov_g = $tov_g->toArray();
-                $to_balans['rash_sobstv'] = $tov_g['ymsovey'];
-                $sum = $sum + $tov_g['ymsovey'];
+                $to_balans['rash_sobstv'] = $tov_g['value'];
+                $sum = $sum + $tov_g['value'];
 
             } catch (\Throwable $e){
                 $to_balans['rash_sobstv'] = '...';
             }
 
-            $self = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-                ->where('params_resource', '=', 'be1f7e18-c0b7-42d9-b06c-48dbedabf693')->orderbydesc('id')->first();
+            $self = BalansReport::wherebetween('date',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
+                ->where('guid', '=', 'be1f7e18-c0b7-42d9-b06c-48dbedabf693')->orderbydesc('date')->first();
             try {
                 $self = $self->toArray();
-                $to_balans['stor'] = $self['ymsovey'];
-                $sum = $sum + $self['ymsovey'];
+                $to_balans['stor'] = $self['value'];
+                $sum = $sum + $self['value'];
 
             } catch (\Throwable $e){
                 $to_balans['stor'] = '...';
             }
 
-            $val = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-                ->where('params_resource', '=', '2e0ccf1f-5ccf-493e-b5f1-c99cd243a22f')->orderbydesc('id')->first();
+            $val = BalansReport::wherebetween('date',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
+                ->where('guid', '=', '2e0ccf1f-5ccf-493e-b5f1-c99cd243a22f')->orderbydesc('date')->first();
             try {
                 $val = $val->toArray();
-                $to_balans['rash_tov'] = $val['ymsovey'];
-                $sum = $sum + $val['ymsovey'];
+                $to_balans['rash_tov'] = $val['value'];
+                $sum = $sum + $val['value'];
 
             } catch (\Throwable $e){
                 $to_balans['rash_tov'] = '...';
             }
             $to_balans['sum'] = $sum;
-//            $lost = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-//                ->where('params_resource', '=', '02A7D5B84C784FB78F4F418A13E2B92E')->orderbydesc('id')->first();
-//            try {
-//                $lost = $lost->toArray();
-//                $to_balans['lost'] = $lost['ymsovey'];
-//
-//            } catch (\Throwable $e){
-//                $to_balans['lost'] = '...';
-//            }
-//            $all = BalansReport::wherebetween('data',  [date('Y-m-01', strtotime($date)), date('Y-m-01', strtotime($date. ' +1 month'))])
-//                ->where('params_resource', '=', 'ADE21064148F4E8FABCD4E61E9B2D527')->orderbydesc('id')->first();
-//            try {
-//                $all = $all->toArray();
-//                $to_balans['all'] = $all['ymsovey'];
-//
-//            } catch (\Throwable $e){
-//                $to_balans['all'] = '...';
-//            }
-
         return $to_balans;
     }
 
     public function print_balans($date){
-
+        $new_log  = (new MainTableController)->create_log_record('Распечатал данные от смежных систем за '.$date);
         return view('web.pdf_form.pdf_bal', compact( 'date'));
     }
 

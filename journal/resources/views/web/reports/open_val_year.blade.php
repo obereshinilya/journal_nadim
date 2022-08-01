@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="{{asset('assets/libs/tooltip/tooltip.css')}}">
     @endpush
         <div style="display: inline-flex; width: 100%">
-            <h3 >Валовая добыча газа Надымского НГДУ (за год)</h3>
+            <h3 >Балансовый отчет Надымского НГДУ (за год)</h3>
             @include('include.choice_year_for_val')
 
             <button  id="print" class="button button1" style="margin-left: 40%; margin-top: 1%">Печать</button>

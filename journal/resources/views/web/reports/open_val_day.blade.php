@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="{{asset('assets/libs/tooltip/tooltip.css')}}">
     @endpush
         <div style="display: inline-flex; width: 100%">
-            <h3>Валовая добыча газа Надымского НГДУ (за сутки)</h3>
+            <h3>Балансовый отчет Надымского НГДУ (за сутки)</h3>
             <div class="date-input-group" style="margin-left: 2%">
                 <input type="date" id="table_date_start" class="date_input" required onkeydown="return false">
                 <label for="table_date_start" class="table_date_label">Дата</label>

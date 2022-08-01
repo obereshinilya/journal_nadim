@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 
-    Route::get('/test', [Controllers\MainTableController::class, 'create_log_record'])->name('create_log_record');
     //Главная
     Route::get('/', [Controllers\MenuController::class, 'index_hour'])->name('gazprom');
     Route::get('/sut', [Controllers\MenuController::class, 'index_sut']);
@@ -29,6 +28,8 @@ use Illuminate\Support\Facades\Auth;
     Route::get('/create_xml/{hours_xml}', [Controllers\XMLController::class, 'create_xml'])->name('create_xml'); //отправка xml
     Route::get('/create_record_svodniy', [Controllers\BalansController::class, 'create_record_svodniy'])->name('create_record_svodniy'); //Создание строк в сводном отчете каждый час в конце часа
     Route::get('/create_record_valoviy', [Controllers\BalansController::class, 'create_record_valoviy'])->name('create_record_valoviy'); //Создание строк в валовом отчете каждый час в конце часа
+    Route::get('/update_guid', [Controllers\TestController::class, 'update_guid']);        ///Обновление GUID
+
 
 
     //Изменение test_table
